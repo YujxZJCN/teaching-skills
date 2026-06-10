@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Comprehensive teaching lifecycle suite for university professors: design → build → assess → deliver → reflect → improve. 14 skills, 78 modes, 67-agent ensemble, Course Passport state, alignment + quality gates, spec-driven submission auditing, AI-era assessment integrity, plus extensions: slide-deck rendering, executable labs, video scripting, course publishing, TA coordination, accreditation mapping, bilingual courseware.",
   "author": {
-    "name": "yjx-studio"
+    "name": "Jiaxing Yu"
   },
-  "homepage": "https://github.com/yjx-studio/teaching-skills",
-  "repository": "https://github.com/yjx-studio/teaching-skills",
+  "homepage": "https://github.com/YujxZJCN/teaching-skills",
+  "repository": "https://github.com/YujxZJCN/teaching-skills",
   "license": "MIT",
   "keywords": [
     "teaching",

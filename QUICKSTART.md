@@ -3,7 +3,7 @@
 ## 1. Install
 
 ```text
-/plugin marketplace add <your-github-username>/teaching-skills
+/plugin marketplace add YujxZJCN/teaching-skills
 /plugin install teaching-skills
 ```
 
