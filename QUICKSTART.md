@@ -7,7 +7,7 @@
 /plugin install teaching-skills
 ```
 
-or clone + symlink the six skill directories into `~/.claude/skills/`.
+or clone + symlink the skill directories into `~/.claude/skills/`.
 
 ## 2. Your first session — a new course in ~30 minutes of your attention
 

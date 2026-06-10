@@ -26,7 +26,7 @@ academic-paper skills.
 /plugin install teaching-skills
 ```
 
-**Manual:** clone this repo and symlink the six skill directories into
+**Manual:** clone this repo and symlink the skill directories into
 `~/.claude/skills/` (or the project's `.claude/skills/`).
 
 **Verify:** run `/ts-status` in a directory with a `course_passport.yaml`, or just say
@@ -106,7 +106,7 @@ Two ideas hold this together:
 ```
 
 See [QUICKSTART.md](QUICKSTART.md) for a worked first session and
-[MODE_REGISTRY.md](MODE_REGISTRY.md) for all 38 modes.
+[MODE_REGISTRY.md](MODE_REGISTRY.md) for all 78 modes.
 
 ## Design principles
 
