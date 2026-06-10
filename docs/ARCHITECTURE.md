@@ -51,7 +51,7 @@ checklist, then professor acknowledgment. Gates are non-skippable in pipeline mo
 | 2 BUILD | lesson-builder (week-batch / full) | lesson plans, lecture notes, slide outlines, activity sheets, cases | 🧑 per batch |
 | 3 ASSESS | assessment-architect (exam / quiz / rubric / project-brief / integrity-check) | blueprints, instruments, verified keys, rubrics, briefs; `ai_resilience` set | 🧑 blueprint before items; 🧑 per instrument |
 | 3.5 QUALITY | teaching-pipeline → gate_runner | `gates.quality_gate` findings | ✓ Q/T/U/I/W checks (`shared/quality_gate_protocol.md`); BLOCK → Stage 2/3 |
-| 4 DELIVER | student-mentor (all modes, on demand) + lesson-builder (just-in-time) + teaching-reflector (midcourse) | feedback drafts, outreach drafts, letters, midcourse report | 🧑 every person-affecting artifact; never auto-sent |
+| 4 DELIVER | student-mentor (all modes, on demand) + submission-auditor (spec/audit/batch-audit, on demand) + lesson-builder (just-in-time) + teaching-reflector (midcourse) | feedback drafts, outreach drafts, letters, submission audit reports, midcourse report | 🧑 every person-affecting artifact; never auto-sent |
 | 5 REFLECT | teaching-reflector (eval-analysis + triangulation) | evaluation analysis report | 🧑 findings + priorities confirmed |
 | 6 IMPROVE | teaching-pipeline → iteration_coach | `iteration_history[]` entry + redesign brief | 🧑 record confirmed; offer new-term re-entry |
 
@@ -63,6 +63,7 @@ course-designer ──→ learning_outcomes[], assessment_plan[], schedule[], po
 gate_runner     ──→ gates.* (only writer of gate fields; read-only otherwise)
 lesson-builder  ──→ schedule[].activities, schedule[].artifact_refs
 assessment-architect → assessment_plan[].artifact_ref, .ai_resilience
+submission-auditor  → iteration_history[].evidence (anonymous counts only)
 teaching-reflector  → iteration_history[].evidence
 iteration_coach ──→ iteration_history[] (consolidated record)
 ALL skills      ──→ artifacts[] ledger entries (confirmed_by_professor at checkpoints)
@@ -78,11 +79,11 @@ Write discipline: append-don't-overwrite; no skill mutates another stage's field
 
 ```
                       teaching-pipeline (orchestrator, 4 agents)
-                     /        |          |          |         \
-        course-designer  lesson-builder  assessment-  student-   teaching-
-          (6 agents)       (6 agents)    architect    mentor     reflector
-              |                |         (7 agents)  (5 agents)  (6 agents)
-              └────────────────┴──────────────┴──────────┴───────────┘
+                  /       |          |           |          |         \
+     course-designer  lesson-   assessment-  student-  submission-  teaching-
+       (6 agents)     builder   architect    mentor    auditor      reflector
+           |         (6 agents) (7 agents)  (5 agents) (4 agents)  (6 agents)
+           └─────────────┴──────────┴───────────┴───────────┴──────────┘
                                       |
             shared/: course_passport_schema · pedagogy_foundations ·
             alignment_gate_protocol · quality_gate_protocol ·
@@ -90,7 +91,9 @@ Write discipline: append-don't-overwrite; no skill mutates another stage's field
 ```
 
 Handoffs: course-designer → (outcomes/schedule) → lesson-builder; course-designer →
-(assessment_plan) → assessment-architect; teaching-reflector → (iteration evidence) →
+(assessment_plan) → assessment-architect; assessment-architect → (briefs/rubrics as
+spec sources) → submission-auditor; submission-auditor → (class patterns, anonymous) →
+iteration evidence; teaching-reflector → (iteration evidence) →
 course-designer redesign. teaching-reflector's `sotl` mode hands off externally to the
 Academic Research Skills suite for the publication phase.
 

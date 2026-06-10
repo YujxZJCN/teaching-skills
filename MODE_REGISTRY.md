@@ -63,6 +63,16 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | teaching-statement | `/ts-statement` | Socratic elicitation → statement draft |
 | sotl | — | Classroom-inquiry design (with IRB pointer) |
 
+## submission-auditor (5 modes) — Stage 4
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| spec | `/ts-spec` | Compile template / requirements / rubric / exemplar into a confirmed Submission Spec |
+| audit | `/ts-audit` | Check one submission against the spec; feedback report draft |
+| batch-audit | `/ts-audit` (multiple) | Per-student reports + class pattern report + fairness record |
+| self-check | — | Student-facing pre-submission checklist from the spec |
+| calibrate | — | Revise spec checks against professor verdicts on sampled findings |
+
 ## teaching-pipeline (4 modes) — Orchestrator
 
 | Mode | Command | Purpose |
@@ -72,4 +82,4 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | status | `/ts-status` | Passport + calendar position → what's next |
 | new-term | — | Stage 6 → Stage 1 redesign re-entry with evidence |
 
-**Total: 38 modes across 6 skills, 34 agents.**
+**Total: 43 modes across 7 skills, 38 agents.**

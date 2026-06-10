@@ -3,7 +3,7 @@
 A comprehensive suite of Claude Code skills for university professors, covering the full
 teaching lifecycle: **design → build → assess → deliver → reflect → improve**.
 
-6 skills · 38 modes · 34-agent ensemble · 2 quality gates · 1 Course Passport
+7 skills · 43 modes · 38-agent ensemble · 2 quality gates · 1 Course Passport
 
 > **AI is your teaching assistant, not your replacement.** This suite won't teach for
 > you. It handles the structure and the grunt work — drafting outcomes, building
@@ -40,6 +40,7 @@ academic-paper skills.
 | **lesson-builder** | 2 BUILD | Lesson plans, lecture notes, slide outlines, active-learning activities, cases, discussion guides, flipped formats. |
 | **assessment-architect** | 3 ASSESS | Blueprint-first exams and quizzes, rubrics, TILT project briefs, AI-resilience integrity audits, post-exam item analysis. |
 | **student-mentor** | 4 DELIVER | Feedback writing, struggling-student intervention plans, recommendation letters, difficult emails, advising and mentoring plans. |
+| **submission-auditor** | 4 DELIVER | Spec-driven submission checking: compile your template/requirements into a checkable spec, audit submissions (single or batch) with located evidence, per-student feedback reports + class pattern report. |
 | **teaching-reflector** | 5 REFLECT | Bias-honest evaluation analysis, mid-course feedback, peer observation, teaching portfolio and statement, SoTL design. |
 | **teaching-pipeline** | orchestrator | Runs the whole lifecycle over the Course Passport, with two non-skippable gates and a weekly delivery loop. |
 
@@ -52,7 +53,7 @@ Gate 1.5 ALIGNMENT — constructive-alignment audit              ✓ machine + a
 Stage 2 BUILD    → lesson-builder (just-in-time by default)    🧑
 Stage 3 ASSESS   → assessment-architect + integrity audit      🧑
 Gate 3.5 QUALITY — AI-integrity, transparency, UDL, workload   ✓ machine + ack
-Stage 4 DELIVER  → weekly loop: materials · mentoring · midcourse feedback
+Stage 4 DELIVER  → weekly loop: materials · mentoring · submission audits · midcourse feedback
 Stage 5 REFLECT  → teaching-reflector eval-analysis            🧑
 Stage 6 IMPROVE  → iteration record → next term re-enters Stage 1
 ```
@@ -123,6 +124,7 @@ course-designer/        SKILL.md + agents/ + references/ + templates/
 lesson-builder/         〃
 assessment-architect/   〃
 student-mentor/         〃
+submission-auditor/     〃
 teaching-reflector/     〃
 teaching-pipeline/      SKILL.md + agents/ + references/
 shared/                 Course Passport schema · pedagogy foundations · gate protocols

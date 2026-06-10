@@ -1,6 +1,6 @@
 ---
 name: teaching-pipeline
-description: "Full teaching-lifecycle orchestrator for university professors. 4-agent team driving the five sibling skills through staged gates over the Course Passport: design → alignment gate → build → assess → quality gate → semester delivery loop → reflection → next-term improvement. Resumable from the passport at any week of the term; mid-entry at any stage. Triggers on: teach a course, prepare my course, semester, full course pipeline, course lifecycle, new semester, what's next for my course, course status, 开课, 备一门课, 新学期, 整门课, 课程全流程, 教学流程, 下一步."
+description: "Full teaching-lifecycle orchestrator for university professors. 4-agent team driving the six sibling skills through staged gates over the Course Passport: design → alignment gate → build → assess → quality gate → semester delivery loop → reflection → next-term improvement. Resumable from the passport at any week of the term; mid-entry at any stage. Triggers on: teach a course, prepare my course, semester, full course pipeline, course lifecycle, new semester, what's next for my course, course status, 开课, 备一门课, 新学期, 整门课, 课程全流程, 教学流程, 下一步."
 metadata:
   version: "1.0.0"
   last_updated: "2026-06-10"
@@ -11,13 +11,14 @@ metadata:
     - lesson-builder
     - assessment-architect
     - student-mentor
+    - submission-auditor
     - teaching-reflector
 ---
 
 # Teaching Pipeline — Course Lifecycle Orchestrator
 
 Orchestrates the whole teaching lifecycle — design, build, assess, deliver, reflect,
-improve — by dispatching the five sibling skills in backward-design order over a single
+improve — by dispatching the six sibling skills in backward-design order over a single
 Course Passport (`shared/course_passport_schema.md`). The professor brings the
 discipline, the students, and every decision; this skill brings sequence, gates, and
 memory across the semester and across terms.
@@ -80,7 +81,7 @@ Stage 6  IMPROVE    — iteration record → passport iteration_history;
 | 2 BUILD | `lesson-builder` `week-batch` | `lessons/W*` packages, schedule `artifact_refs` | 🧑 per batch |
 | 3 ASSESS | `assessment-architect` (`exam`/`quiz`/`project-brief`/`rubric`… per `assessment_plan` type) + `integrity-check` | instruments + rubrics, `ai_resilience` set per assessment | 🧑 per instrument |
 | 3.5 QUALITY | gate_runner → `shared/quality_gate_protocol.md` | `gates.quality_gate` findings + status | ✓ machine checks + professor acknowledgment; BLOCK → Stage 2/3, max 3 rounds |
-| 4 DELIVER | weekly: `lesson-builder` `week-batch` (next week); `student-mentor` (on demand); `teaching-reflector` `midcourse` (week 4–6) | week materials, mentoring outputs, midcourse report | 🧑 per weekly cycle; person-affecting outputs per Checkpoint Protocol hard rule |
+| 4 DELIVER | weekly: `lesson-builder` `week-batch` (next week); `student-mentor` (on demand); `submission-auditor` `spec`/`audit`/`batch-audit` (on demand, when work comes in); `teaching-reflector` `midcourse` (week 4–6) | week materials, mentoring outputs, submission audit reports, midcourse report | 🧑 per weekly cycle; person-affecting outputs per Checkpoint Protocol hard rule |
 | 5 REFLECT | `teaching-reflector` `eval-analysis` + triangulation with peer/artifact evidence | evaluation analysis report | 🧑 analysis confirmed |
 | 6 IMPROVE | iteration_coach | `iteration_history` entry, prioritized change list, redesign brief | 🧑 record confirmed; offer `new-term` |
 
@@ -117,7 +118,9 @@ each week N of the term:
   2. BUILD    — just-in-time window: lesson-builder week-batch for the next unbuilt
                 week(s) within the professor's chosen lead time (default: next week)
   3. SUPPORT  — student-mentor on demand ONLY: feedback batches, a struggling student
-                the professor brings up, emails, office-hours prep
+                the professor brings up, emails, office-hours prep;
+                submission-auditor when work comes in: spec confirmed at assignment
+                release, audit/batch-audit at collection
   4. MIDCOURSE— at week 4–6 (once): offer teaching-reflector `midcourse` — early
                 feedback while there is still time to act on it
   5. CHECK    — 🧑 weekly checkpoint: what shipped, what's pending, next Monday's picture
@@ -185,6 +188,7 @@ lifecycle, not for one deliverable.
 | One lesson, lecture notes, slides, an activity, a case | `lesson-builder` |
 | One exam, quiz, rubric, project brief, or an item analysis | `assessment-architect` |
 | Feedback, a recommendation letter, a student email, office-hours prep | `student-mentor` |
+| Check submissions against a template/standard, batch compliance reports | `submission-auditor` |
 | Analyze evals, a peer observation, teaching statement, SoTL | `teaching-reflector` |
 
 ## Outputs

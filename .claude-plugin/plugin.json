@@ -1,7 +1,7 @@
 {
   "name": "teaching-skills",
   "version": "1.0.0",
-  "description": "Comprehensive teaching lifecycle suite for university professors: design → build → assess → deliver → reflect → improve. 6 skills, 38 modes, 34-agent ensemble, Course Passport state, alignment + quality gates, AI-era assessment integrity.",
+  "description": "Comprehensive teaching lifecycle suite for university professors: design → build → assess → deliver → reflect → improve. 7 skills, 43 modes, 38-agent ensemble, Course Passport state, alignment + quality gates, spec-driven submission auditing, AI-era assessment integrity.",
   "author": {
     "name": "yjx-studio"
   },

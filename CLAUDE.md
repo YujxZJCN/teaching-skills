@@ -8,7 +8,8 @@ a session where these skills are installed:
 - Single-artifact requests go to the specific skill, not the pipeline:
   course-level design → `course-designer` · class-meeting materials → `lesson-builder`
   · graded instruments and rubrics → `assessment-architect` · anything about an
-  individual student → `student-mentor` · evidence analysis and career artifacts →
+  individual student → `student-mentor` · checking submissions against a standard →
+  `submission-auditor` · evidence analysis and career artifacts →
   `teaching-reflector`.
 - Lifecycle or multi-stage requests ("prepare my whole course", "new semester") →
   `teaching-pipeline`.
