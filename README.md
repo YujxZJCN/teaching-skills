@@ -1,5 +1,7 @@
 # Teaching Skills for Claude Code
 
+English | [简体中文](README.zh-CN.md)
+
 A comprehensive suite of Claude Code skills for university professors, covering the full
 teaching lifecycle: **design → build → assess → deliver → reflect → improve**.
 
