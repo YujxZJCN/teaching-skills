@@ -11,6 +11,12 @@ a session where these skills are installed:
   individual student → `student-mentor` · checking submissions against a standard →
   `submission-auditor` · evidence analysis and career artifacts →
   `teaching-reflector`.
+- Extension skills: rendering actual slide decks/figures/posters → `deck-studio` ·
+  executable labs, datasets, starter code, autograders → `lab-forge` · video scripts,
+  storyboards, captions → `media-scripter` · announcements, weekly emails, course site,
+  LMS packaging → `course-publisher` · TA handbooks, grading calibration, allocation →
+  `ta-coordinator` · accreditation matrices, evidence packages, self-study →
+  `accreditation-mapper` · glossaries, translation, bilingual sync → `bilingual-courseware`.
 - Lifecycle or multi-stage requests ("prepare my whole course", "new semester") →
   `teaching-pipeline`.
 - Ambiguous between guided and direct production → prefer the guided/Socratic mode;

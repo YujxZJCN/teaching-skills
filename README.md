@@ -3,7 +3,7 @@
 A comprehensive suite of Claude Code skills for university professors, covering the full
 teaching lifecycle: **design → build → assess → deliver → reflect → improve**.
 
-7 skills · 43 modes · 38-agent ensemble · 2 quality gates · 1 Course Passport
+14 skills · 78 modes · 67-agent ensemble · 2 quality gates · 1 Course Passport
 
 > **AI is your teaching assistant, not your replacement.** This suite won't teach for
 > you. It handles the structure and the grunt work — drafting outcomes, building
@@ -43,6 +43,19 @@ academic-paper skills.
 | **submission-auditor** | 4 DELIVER | Spec-driven submission checking: compile your template/requirements into a checkable spec, audit submissions (single or batch) with located evidence, per-student feedback reports + class pattern report. |
 | **teaching-reflector** | 5 REFLECT | Bias-honest evaluation analysis, mid-course feedback, peer observation, teaching portfolio and statement, SoTL design. |
 | **teaching-pipeline** | orchestrator | Runs the whole lifecycle over the Course Passport, with two non-skippable gates and a weekly delivery loop. |
+
+**Extension skills** — production, operations, and compliance layers; each works
+standalone and the pipeline dispatches them on demand:
+
+| Skill | Stage | What it does |
+|-------|-------|--------------|
+| **deck-studio** | 2 | Renders actual slide decks (Marp/Pandoc/Beamer/python-pptx), course-wide themes, code-generated figures, handouts, posters. Accessibility enforced, never fakes a render. |
+| **lab-forge** | 2 | Executable STEM artifacts: lab packages, per-student synthetic datasets with recoverable ground truth, starter code, autograders, executed reference solutions. |
+| **media-scripter** | 2 | Recorded-media scripting: 6–9 min mini-lecture scripts, storyboards, episode series, caption/transcript cleanup, audio adaptations. |
+| **course-publisher** | 4 | Student-facing comms from the passport: announcements, weekly emails, static course site, LMS packaging, living FAQ. Drafts only — facts traced, never invented. |
+| **ta-coordinator** | 4 | Teaching-team operations: TA handbooks, grading calibration sessions, hours-balanced allocation, meeting agendas, cross-TA consistency checks (no league tables). |
+| **accreditation-mapper** | 1 | Outcomes → program outcomes → standards matrices with evidence status, evidence packages, gap analysis, honesty-capped self-study drafts. |
+| **bilingual-courseware** | support | Terminology-disciplined bilingual materials: professor-confirmed glossary, glossary-bound translation, paired-version sync, consistency audits. |
 
 ## The pipeline
 
@@ -127,6 +140,13 @@ student-mentor/         〃
 submission-auditor/     〃
 teaching-reflector/     〃
 teaching-pipeline/      SKILL.md + agents/ + references/
+deck-studio/            extension skills, same layout
+lab-forge/              〃
+media-scripter/         〃
+course-publisher/       〃
+ta-coordinator/         〃
+accreditation-mapper/   〃
+bilingual-courseware/   〃
 shared/                 Course Passport schema · pedagogy foundations · gate protocols
                         · AI-era integrity · checkpoint protocol
 commands/               /ts-* slash commands

@@ -177,6 +177,21 @@ Rules of the loop:
    final human pass); student names, grades, and case details are never written into
    `course_passport.yaml` or any pipeline state file.
 
+## Extension Skills
+
+Seven extension skills attach to pipeline stages on demand. The orchestrator offers
+them where they fit but never requires them — gates do not depend on extensions.
+
+| Stage | Extension dispatched | When |
+|-------|---------------------|------|
+| 1 / 6 | `accreditation-mapper` | Professor faces accreditation/program reporting; Stage 6 iteration records feed its continuous-improvement narrative |
+| 2 | `deck-studio` | After lesson-builder slide outlines — render actual decks with the course theme |
+| 2 | `media-scripter` | Flipped/online courses — script the recorded mini-lectures the flipped spec calls for |
+| 2–3 | `lab-forge` | STEM courses — executable labs, per-student datasets, autograders (output feeds submission-auditor) |
+| 4 | `course-publisher` | Weekly loop — announcements, weekly emails, course site, LMS packaging |
+| 4 | `ta-coordinator` | Courses with TAs — onboarding before week 1, calibration before first graded assessment, consistency checks after |
+| any | `bilingual-courseware` | Bilingual/EMI courses — glossary before the first translated artifact, sync checks on paired materials |
+
 ## Does NOT Trigger
 
 Single-artifact requests route to the specific skill — the pipeline is for the

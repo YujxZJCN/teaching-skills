@@ -82,4 +82,83 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | status | `/ts-status` | Passport + calendar position → what's next |
 | new-term | — | Stage 6 → Stage 1 redesign re-entry with evidence |
 
-**Total: 43 modes across 7 skills, 38 agents.**
+---
+
+# Extension skills
+
+Production, operations, and compliance layers on top of the core pipeline. Each works
+standalone; the pipeline dispatches them on demand at their stage.
+
+## deck-studio (6 modes) — Stage 2 extension
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| deck | `/ts-deck` | Outline/notes → rendered slide deck via real toolchain (Marp/Pandoc/Beamer/python-pptx) |
+| theme | — | Course-wide visual theme: typography, colors, layout masters |
+| figure | — | One code-rendered diagram/chart (matplotlib/mermaid/TikZ), colorblind-safe |
+| handout | — | Deck → student handout variant |
+| restyle | — | Audit + rebuild an existing deck against the slide design rules |
+| poster | — | Academic/teaching poster |
+
+## lab-forge (6 modes) — Stage 2 extension (STEM)
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| lab | `/ts-lab` | Complete lab package: handout + starter + data + verified solution + grader |
+| dataset | — | Synthetic datasets with planted, recoverable properties; per-student variants |
+| starter-code | — | Scaffold repo: stubs with contracts, runs as shipped |
+| autograder | — | Visible + hidden test suites, partial-credit map, feeds submission-auditor |
+| solution | — | Reference solution produced by solving + executing; grading notes |
+| variant | — | N difficulty-equivalent variants with the equivalence argument |
+
+## course-publisher (5 modes) — Stage 4 extension
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| announcement | `/ts-announce` | One-off action-first announcement draft |
+| weekly-email | — | Week-N email from passport schedule + calendar |
+| course-site | — | Static course website generated from the passport |
+| lms-package | — | Upload-ready artifact packaging + per-LMS checklist |
+| faq | — | Living FAQ answered from passport facts |
+
+## accreditation-mapper (4 modes) — Stage 1 extension
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| map | `/ts-accredit` | Course LO → program outcome → standard criteria matrix with evidence status |
+| evidence | — | Evidence package assembly from passport artifacts |
+| gap | — | Coverage gap analysis → remediation routed to course-designer |
+| self-study | — | Self-study section drafts, claim strength capped by evidence status |
+
+## ta-coordinator (5 modes) — Stage 4 extension
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| onboarding | — | Course-specific TA handbook + orientation plan |
+| calibration | `/ts-calibrate` | Grading norming session package + agreement stats |
+| allocation | — | Hours-balanced duty allocation plan |
+| meeting | — | Weekly TA meeting agenda + decisions log |
+| consistency | — | Cross-TA grading consistency analysis (aggregate-first) |
+
+## media-scripter (5 modes) — Stage 2 extension
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| script | `/ts-script` | Mini-lecture video script: narration + visual cues + timing |
+| storyboard | — | Shot-by-shot plan for screencasts/demos |
+| series | — | Topic → 6–9 min episode sequence with retrieval questions |
+| captions | — | Raw transcript → accurate captions + readable transcript |
+| audio | — | Podcast-style adaptation with chapter markers |
+
+## bilingual-courseware (4 modes) — Cross-cutting support
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| glossary | `/ts-glossary` | Course terminology glossary: candidates proposed, professor confirms |
+| translate | `/ts-translate` | Glossary-bound translation with pedagogical-equivalence pass |
+| parallel | — | Paired-version sync: propagate changes, detect drift |
+| check | — | Read-only terminology consistency audit across materials |
+
+---
+
+**Total: 78 modes across 14 skills (6 core + teaching-pipeline + 7 extensions), 67 agents.**

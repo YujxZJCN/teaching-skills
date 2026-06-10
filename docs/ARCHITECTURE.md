@@ -1,4 +1,4 @@
-# Teaching Skills Architecture (v1.0.0)
+# Teaching Skills Architecture (v1.1.0)
 
 Full pipeline view: flow, stage matrix, passport data flow, skill dependency graph, and
 gate inventory. Per-mode reference: `MODE_REGISTRY.md`. Per-skill detail: each skill's
@@ -96,6 +96,29 @@ spec sources) → submission-auditor; submission-auditor → (class patterns, an
 iteration evidence; teaching-reflector → (iteration evidence) →
 course-designer redesign. teaching-reflector's `sotl` mode hands off externally to the
 Academic Research Skills suite for the publication phase.
+
+## 5b. Extension skills (v1.1.0)
+
+Seven extension skills layer production, operations, and compliance work on the core
+pipeline. They follow every shared protocol (passport discipline, checkpoints, honesty
+markers) and are dispatched on demand — the gates never depend on them.
+
+| Extension | Attaches at | Consumes | Produces |
+|-----------|------------|----------|----------|
+| deck-studio | Stage 2 | lesson-builder slide outlines, theme spec | rendered decks, themes, code-generated figures, handouts, posters |
+| lab-forge | Stage 2–3 | assessment_plan entries, outcomes | executable lab packages, datasets + ground truth (professor-only), starter code, autograders, verified solutions |
+| media-scripter | Stage 2 | lecture notes, flipped specs | video scripts, storyboards, episode series, captions/transcripts |
+| course-publisher | Stage 4 | passport schedule/policies/artifacts | announcement + weekly-email drafts, static course site, LMS packages, FAQ |
+| ta-coordinator | Stage 4 | rubrics, assessment plan | TA handbooks, calibration packages, allocation plans, consistency analyses |
+| accreditation-mapper | Stage 1 / 6 | learning_outcomes, artifacts, iteration_history | outcome–standard matrices, evidence indexes, gap analyses, self-study drafts |
+| bilingual-courseware | cross-cutting | any course artifact | confirmed glossary, glossary-bound translations, sync registry, terminology audits |
+
+Notable cross-links: lab-forge autograder output feeds submission-auditor's
+deterministic checks for code genres; bilingual-courseware's glossary is consumed by
+course-publisher (announcements) and media-scripter (caption terminology);
+accreditation-mapper's continuous-improvement narrative is built from the Stage 6
+`iteration_history` the core pipeline maintains; deck-studio and course-publisher share
+the build-product model (markdown/passport is source, rendered output is rebuildable).
 
 ## 6. Gate inventory
 
