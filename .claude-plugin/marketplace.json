@@ -1,0 +1,16 @@
+{
+  "name": "teaching-skills",
+  "owner": {
+    "name": "yjx-studio"
+  },
+  "description": "Teaching Skills — production-grade course design, lesson building, assessment, student mentoring, and teaching reflection for Claude Code.",
+  "plugins": [
+    {
+      "name": "teaching-skills",
+      "source": "./",
+      "description": "6 skills + 38 modes + Course Passport pipeline with alignment and quality gates.",
+      "version": "1.0.0",
+      "license": "MIT"
+    }
+  ]
+}
