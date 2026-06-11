@@ -1,0 +1,329 @@
+# Course Passport — CS 304 Introduction to Machine Learning (SHOWCASE)
+# Demonstration artifact: hypothetical course, synthetic data, no real students.
+# Schema: shared/course_passport_schema.md (passport_version 1.0)
+
+passport_version: "1.0"
+course:
+  code: "CS 304"
+  title: "Introduction to Machine Learning"
+  discipline: "Computer Science"
+  level: "undergraduate-3rd-year"
+  credits: 3
+  modality: "in-person"
+  class_size: 90
+  contact_hours_per_week: 3          # one 90-min lecture + one 90-min lab session per week
+  weeks: 16
+  language_of_instruction: "English"
+  prerequisites: ["CS 201 Data Structures", "MATH 210 Linear Algebra", "STAT 110 Probability"]
+  institution_constraints:
+    - "English-medium instruction (EMI) at a Chinese university — all materials and assessments in English"
+
+learner_profile:
+  prior_knowledge: >-
+    Strong programmers (CS 201; most fluent in Python). Linear algebra (MATH 210)
+    and probability (STAT 110) formally completed, but probability preparation is
+    mixed and linear algebra is rusty for many — the W1 lab runs a refresher.
+  motivation_context: >-
+    Required core for the 3rd-year CS cohort; strong interest in ML engineering
+    roles and graduate study (professor's report — not surveyed).
+  known_difficulties:
+    - "Confusing training error with test error — treating low training error as model quality"
+    - "Treating ML as API-calling: using library models without understanding their assumptions"
+    - "Linear algebra rust: matrix calculus and decompositions need re-activation"
+  accessibility_needs: "unknown"
+
+learning_outcomes:
+  - id: LO1
+    statement: "Explain the assumptions, inductive biases, and characteristic failure modes of core supervised and unsupervised learning algorithms"
+    bloom_level: understand
+    assessed_by: [A1, A3, A6]
+    taught_in: [W1, W2, W3, W4, W6, W9, W10, W11, W13]
+  - id: LO2
+    statement: "Implement linear models, tree ensembles, and neural networks from their mathematical specifications using NumPy and scikit-learn/PyTorch"
+    bloom_level: apply
+    assessed_by: [A2, A3, A6]
+    taught_in: [W3, W4, W9, W11, W12]
+  - id: LO3
+    statement: "Apply correct experimental methodology — train/validation/test splits, cross-validation, and hyperparameter search — to fit and tune models on real datasets"
+    bloom_level: apply
+    assessed_by: [A1, A2, A3]
+    taught_in: [W2, W5, W7]
+  - id: LO4
+    statement: "Diagnose model failures by analyzing learning curves, bias-variance behavior, and error patterns, and select justified corrective actions"
+    bloom_level: analyze
+    assessed_by: [A2, A3, A4]
+    taught_in: [W5, W6, W7, W12]
+  - id: LO5
+    statement: "Evaluate the suitability and limits of a trained model for a stated task, including metric choice, data-leakage risks, and ethical considerations"
+    bloom_level: evaluate
+    assessed_by: [A4, A5, A6]
+    taught_in: [W5, W14]
+  - id: LO6
+    statement: "Design and carry out an end-to-end machine learning project, from problem formulation through data preparation, modeling, evaluation, and written report"
+    bloom_level: create
+    assessed_by: [A4, A5]
+    taught_in: [W5, W7, W10, W14]
+
+assessment_plan:
+  - id: A1                            # Tier P — measures unaided fluency
+    type: quiz
+    title: "Weekly Quizzes (best 8 of 10)"
+    weight: 10
+    outcomes_assessed: [LO1, LO3]
+    week: "W2-W13 (10 quizzes at lab start; none in W8 or W10)"
+    ai_resilience: reviewed           # in-lab, paper, devices away — low vulnerability
+    artifact_ref: null
+  - id: A2                            # Tier D — professional-practice tools with disclosure
+    type: homework
+    title: "Lab Assignments (4)"
+    weight: 20
+    outcomes_assessed: [LO2, LO3, LO4]
+    week: "W5 / W7 / W11 / W13 (due dates; each assigned ~2 weeks prior)"
+    ai_resilience: reviewed           # accepted risk — see integrity_audit.md (disclosure appendix graded)
+    artifact_ref: null
+  - id: A3                            # Tier P — measures unaided fluency
+    type: exam
+    title: "Midterm Exam (in-class, closed-book)"
+    weight: 25
+    outcomes_assessed: [LO1, LO2, LO3, LO4]
+    week: W8
+    ai_resilience: reviewed
+    artifact_ref: "exam_blueprint_midterm.md"
+  - id: A4                            # Tier D — process-evidence design
+    type: project
+    title: "Course Project (staged: M1 proposal 4% W6 · M2 progress 8% W10 · M3 final report 18% W14)"
+    weight: 30
+    outcomes_assessed: [LO4, LO5, LO6]
+    week: "W6 / W10 / W14 (milestones)"
+    ai_resilience: redesigned         # was a single-deadline take-home; redesigned to staged milestones
+                                      # with feedback-response notes + sampled defenses — integrity_audit.md
+    artifact_ref: null
+  - id: A5                            # Tier P — live oral, unaided
+    type: presentation
+    title: "Project Defense (sampled 5-min oral check; required completion gate for A4 M3)"
+    weight: 0
+    outcomes_assessed: [LO5, LO6]
+    week: W15
+    ai_resilience: reviewed
+    artifact_ref: null
+  - id: A6                            # Tier P — measures unaided fluency
+    type: exam
+    title: "Final Exam (cumulative, emphasis W9-W14)"
+    weight: 15
+    outcomes_assessed: [LO1, LO2, LO5]
+    week: W16
+    ai_resilience: reviewed
+    artifact_ref: null
+# Weights: 10 + 20 + 25 + 30 + 0 + 15 = 100
+
+schedule:
+  - id: W1
+    topic: "The learning problem; types of learning; k-NN as a first model (lab: NumPy & linear algebra refresher)"
+    outcomes: [LO1]
+    activities: []
+    assessments_due: []
+    artifact_refs: []
+  - id: W2
+    topic: "The ML workflow: data, features, train/test discipline; a first end-to-end pipeline"
+    outcomes: [LO1, LO3]
+    activities: []
+    assessments_due: [A1]             # Quiz 1
+    artifact_refs: []
+  - id: W3
+    topic: "Linear regression: least squares, gradient descent"
+    outcomes: [LO1, LO2]
+    activities: []
+    assessments_due: [A1]             # Quiz 2
+    artifact_refs: []
+  - id: W4
+    topic: "Linear classification: logistic regression, decision boundaries, classification metrics"
+    outcomes: [LO1, LO2]
+    activities: []
+    assessments_due: [A1]             # Quiz 3
+    artifact_refs: []
+  - id: W5
+    topic: "Evaluation methodology: train/validation/test splits, cross-validation, metric choice, learning curves (lab: project launch — problem-formulation workshop)"
+    outcomes: [LO3, LO4, LO5, LO6]
+    activities: []
+    assessments_due: [A1, A2]         # Quiz 4; Lab 1
+    artifact_refs: []
+  - id: W6
+    topic: "Overfitting, generalization, and regularization"
+    outcomes: [LO1, LO4]
+    activities:
+      - "Peer-instruction concept question: which model to deploy (lecture S3)"
+      - "Think-pair-share: diagnose four learning curves (lecture S5; activity_W06_bias_variance.md)"
+    assessments_due: [A1, A4]         # Quiz 5; A4 Milestone 1 (proposal)
+    artifact_refs: ["lesson_W06_overfitting.md", "activity_W06_bias_variance.md"]
+  - id: W7
+    topic: "Model selection and hyperparameter search; the end-to-end project workflow (lab: project pipeline workshop)"
+    outcomes: [LO3, LO4, LO6]
+    activities: []
+    assessments_due: [A1, A2]         # Quiz 6; Lab 2
+    artifact_refs: []
+  - id: W8
+    tag: logistics                    # exam week — midterm in lecture slot; lab slot: post-midterm error-analysis clinic
+    topic: "Midterm exam (covers W1-W7)"
+    outcomes: []
+    activities: []
+    assessments_due: [A3]
+    artifact_refs: ["exam_blueprint_midterm.md", "midterm_items_sample.md"]
+  - id: W9
+    topic: "Decision trees and random forests"
+    outcomes: [LO1, LO2]
+    activities: []
+    assessments_due: [A1]             # Quiz 7
+    artifact_refs: []
+  - id: W10
+    topic: "Boosting and ensemble practice (lab: project progress clinic)"
+    outcomes: [LO1, LO6]
+    activities: []
+    assessments_due: [A4]             # A4 Milestone 2 (progress report; no quiz this week)
+    artifact_refs: []
+  - id: W11
+    topic: "Neural networks I: from perceptron to MLP; backpropagation"
+    outcomes: [LO1, LO2]
+    activities: []
+    assessments_due: [A1, A2]         # Quiz 8; Lab 3
+    artifact_refs: []
+  - id: W12
+    topic: "Neural networks II: training practice, debugging deep models"
+    outcomes: [LO2, LO4]
+    activities: []
+    assessments_due: [A1]             # Quiz 9
+    artifact_refs: []
+  - id: W13
+    topic: "Unsupervised learning: k-means clustering, PCA"
+    outcomes: [LO1]
+    activities: []
+    assessments_due: [A1, A2]         # Quiz 10 (last); Lab 4
+    artifact_refs: []
+  - id: W14
+    topic: "ML in the wild: data leakage, metric pitfalls, fairness and ethics"
+    outcomes: [LO5, LO6]
+    activities: []
+    assessments_due: [A4]             # A4 Milestone 3 (final report)
+    artifact_refs: []
+  - id: W15
+    tag: logistics                    # review week
+    topic: "Course synthesis and review; sampled project defenses"
+    outcomes: []
+    activities: []
+    assessments_due: [A5]
+    artifact_refs: []
+  - id: W16
+    tag: logistics                    # exam week
+    topic: "Final exam"
+    outcomes: []
+    activities: []
+    assessments_due: [A6]
+    artifact_refs: []
+
+policies:
+  grading_scheme: >-
+    Final grade = weighted sum per assessment plan (quizzes: best 8 of 10 counted).
+    No curve. Letter cutoffs: A >= 90, B 80-89, C 70-79, D 60-69, F < 60.
+  late_policy: >-
+    Labs and project milestones: 3 free late days pooled across the term (max 2 on
+    one artifact); afterwards -10% per day, up to 3 days, then not accepted.
+    Quizzes: no make-ups — best-8-of-10 absorbs absences. Exams: make-ups only for
+    documented emergencies, arranged with the instructor in advance where possible.
+  ai_use_policy: >-
+    Three-tier per-assessment policy (shared/ai_era_integrity.md): Tier P for
+    A1/A3/A5/A6 — these measure unaided fluency; Tier D for A2/A4 — professional-
+    practice tools permitted with a graded disclosure appendix. Full table with
+    per-tier rationales in syllabus.md, section "AI use in this course".
+  integrity_policy: "[NEEDS PROFESSOR INPUT: institutional academic integrity policy link — faculty handbook §academic-conduct]"
+  attendance_policy: >-
+    Attendance is not directly graded. Lab sessions are where quizzes run and
+    project clinics happen — missing them costs opportunities, not points.
+    Peer-instruction votes are never graded for correctness.
+
+workload_audit:
+  estimated_hours_per_week: 6.2
+  credit_hour_target: 6.0             # 2 out-of-class hours per contact hour × 3
+  status: within_range
+  constants_used: >-
+    reading 20 pp/wk × ~450 words/p ÷ 100 wpm (dense technical) = 1.5 h; labs
+    4 × (4 h professor estimate × 3 novice multiplier) ÷ 16 wk = 3.0 h; project
+    22 h team-share estimate ÷ 16 wk ≈ 1.4 h; quiz prep 10 × 0.5 h ÷ 16 wk ≈ 0.3 h.
+    Exam preparation treated as redistributed study time, not added. Full
+    arithmetic in alignment_report.md (check D1/D2).
+
+gates:
+  alignment_gate:
+    status: pass
+    last_run: "2026-06-10"
+    findings:
+      - check_id: C2
+        severity: WARN
+        detail: >-
+          A4 course project weight 30% is within the 40% single-assessment limit,
+          but A4 (final report M3 due W14) and A6 (final exam, W16) together
+          resolve 45% of the grade in the final six weeks of the term.
+        affected_ids: [A4, A6]
+        dismissed: >-
+          deliberate — A4's staged milestones move 12 of its 30 points and the
+          bulk of the project work outside the final six weeks (M1 W6 4%, M2 W10
+          8%); only the final report (18%) plus A6 (15%) genuinely lands late.
+      - check_id: B3
+        severity: WARN
+        detail: >-
+          Bloom distribution sanity: LO6 (create) is the sole create-level outcome
+          and is evidenced only by A4/A5; if a team's project collapses, no other
+          instrument shows create-level work.
+        affected_ids: [LO6, A4, A5]
+        dismissed: >-
+          acknowledged — one create-level outcome is the intended scope for a
+          first ML course; team-collapse risk is mitigated by milestone feedback
+          at W6 and W10.
+  quality_gate:
+    status: pass
+    last_run: "2026-06-10"
+    findings: []
+
+artifacts:
+  - path: "syllabus.md"
+    type: syllabus
+    produced_by: "course-designer (syllabus-only)"
+    stage: 1
+    confirmed_by_professor: true
+  - path: "alignment_report.md"
+    type: gate_report
+    produced_by: "alignment_auditor_agent (course-designer align-check)"
+    stage: 1.5
+    confirmed_by_professor: true
+  - path: "lesson_W06_overfitting.md"
+    type: lesson_plan
+    produced_by: "lesson-builder (full)"
+    stage: 2
+    confirmed_by_professor: true
+  - path: "activity_W06_bias_variance.md"
+    type: activity_sheet
+    produced_by: "lesson-builder (activities)"
+    stage: 2
+    confirmed_by_professor: true
+  - path: "exam_blueprint_midterm.md"
+    type: test_blueprint
+    produced_by: "assessment-architect (exam — blueprint_agent)"
+    stage: 3
+    confirmed_by_professor: true
+  - path: "midterm_items_sample.md"
+    type: exam_items_sample
+    produced_by: "assessment-architect (exam — item_writer_agent + answer_key_agent)"
+    stage: 3
+    confirmed_by_professor: true
+  - path: "integrity_audit.md"
+    type: integrity_report
+    produced_by: "integrity_auditor_agent (assessment-architect integrity-check)"
+    stage: 3
+    confirmed_by_professor: true
+
+iteration_history:
+  - term: "2025 Fall"
+    changes:
+      - "Split the monolithic course project (single W14 deadline) into staged milestones W6/W10/W14 with feedback-response notes and sampled W15 defenses (now A4 + A5)"
+    evidence: >-
+      teaching-reflector eval-analysis recurring theme "the project was dumped on
+      us in week 12" (11 of 47 comments); 31% of project submissions arrived late
+      under the single-deadline design.

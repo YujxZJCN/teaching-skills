@@ -87,6 +87,16 @@ Two ideas hold this together:
   Quality Gate verifies the built artifacts are transparent (TILT), accessible (UDL),
   integrity-coherent (AI-era), and humanly workloaded — before students see them.
 
+## Showcase: what the output looks like
+
+**[Browse the worked example →](examples/showcase/)** — a complete artifact set for a
+demonstration course (CS 304 Introduction to Machine Learning, 90 students): filled
+Course Passport, syllabus, alignment gate report with a dismissed-warning trail, a
+lesson plan + activity sheet, an exam blueprint with sample items and a worked key,
+and the AI-integrity audit that redesigned the course project. Synthetic and clearly
+labeled as such — but every file obeys the suite's own rules, so you can judge the
+output quality before installing.
+
 ## Quick start
 
 ```
