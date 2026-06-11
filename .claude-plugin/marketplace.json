@@ -9,7 +9,7 @@
       "name": "teaching-skills",
       "source": "./",
       "description": "14 skills + 78 modes + Course Passport pipeline with alignment and quality gates.",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "license": "MIT"
     }
   ]
