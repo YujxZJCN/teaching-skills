@@ -47,6 +47,7 @@ Term just ended, here are my student evals — close out the semester
 | `mid-entry` | Professor arrives with existing materials or mid-process ("I already have a syllabus", "it's week 9") | Detect/ask where they are, validate existing materials into the passport (via course-designer `align-check`, not re-derivation), enter at the matching stage per the routing table below |
 | `status` | "What's next?", "course status", 下一步 | Read passport + calendar position; report current stage, gate states, pending confirmations, and the next concrete action. Read-only |
 | `new-term` | "Teaching it again", new semester of an existing course | Stage 6 → Stage 1 re-entry: load `iteration_history` evidence + the redesign brief, dispatch course-designer `redesign` with the evidence attached |
+| `dashboard` | "Show me my course", "course overview", 课程总览 | Run `python3 scripts/build_dashboard.py <passport>` → single-file `course_dashboard.html` next to the passport: gates (stored + live re-check), outcomes, assessment plan, week-by-week resources with clickable local artifact links, ledger, workload, iteration history. Regenerated at any checkpoint on request — it is a build product of the passport, never hand-edited |
 
 **Mode dispatch rule:** a passport already on disk + a vague request → run `status`
 first and propose the next action; never restart `full` on top of an existing passport.

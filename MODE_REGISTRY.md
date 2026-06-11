@@ -73,7 +73,7 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | self-check | — | Student-facing pre-submission checklist from the spec |
 | calibrate | — | Revise spec checks against professor verdicts on sampled findings |
 
-## teaching-pipeline (4 modes) — Orchestrator
+## teaching-pipeline (5 modes) — Orchestrator
 
 | Mode | Command | Purpose |
 |------|---------|---------|
@@ -81,6 +81,7 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | mid-entry | — (intent-triggered) | Validate existing materials, enter at the right stage |
 | status | `/ts-status` | Passport + calendar position → what's next |
 | new-term | — | Stage 6 → Stage 1 redesign re-entry with evidence |
+| dashboard | `/ts-dashboard` | Single-file HTML course overview with local artifact links (`scripts/build_dashboard.py`) |
 
 ---
 
@@ -171,4 +172,4 @@ standalone; the pipeline dispatches them on demand at their stage.
 
 ---
 
-**Total: 83 modes across 15 skills (6 core + teaching-pipeline + 8 extensions), 71 agents.**
+**Total: 84 modes across 15 skills (6 core + teaching-pipeline + 8 extensions), 71 agents.**

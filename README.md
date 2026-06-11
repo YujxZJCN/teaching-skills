@@ -5,7 +5,7 @@ English | [简体中文](README.zh-CN.md)
 A comprehensive suite of Claude Code skills for university professors, covering the full
 teaching lifecycle: **design → build → assess → deliver → reflect → improve**.
 
-15 skills · 83 modes · 71-agent ensemble · 2 quality gates · 1 Course Passport
+15 skills · 84 modes · 71-agent ensemble · 2 quality gates · 1 Course Passport
 
 > **AI is your teaching assistant, not your replacement.** This suite won't teach for
 > you. It handles the structure and the grunt work — drafting outcomes, building
@@ -119,7 +119,7 @@ output quality before installing.
 ```
 
 See [QUICKSTART.md](QUICKSTART.md) for a worked first session and
-[MODE_REGISTRY.md](MODE_REGISTRY.md) for all 78 modes.
+[MODE_REGISTRY.md](MODE_REGISTRY.md) for all 84 modes.
 
 ## Design principles
 
@@ -165,9 +165,10 @@ course-publisher/       〃
 ta-coordinator/         〃
 accreditation-mapper/   〃
 bilingual-courseware/   〃
+cohort-analyst/         〃
 shared/                 Course Passport schema (prose + JSON Schema) · pedagogy
                         foundations · gate protocols · AI-era integrity · checkpoints
-scripts/                check_passport.py · check_alignment_gate.py · registry lint
+scripts/                check_passport.py · check_alignment_gate.py · build_dashboard.py · registry lint
 tests/                  validator suite (golden fixture + mutation tests)
 commands/               /ts-* slash commands
 docs/                   ARCHITECTURE.md

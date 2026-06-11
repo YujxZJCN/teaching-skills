@@ -142,6 +142,7 @@ The deterministic core of the contracts is executable, not just documented:
 | `scripts/check_passport.py` | P1–P10 cross-reference invariants: id uniqueness, `assessed_by`↔`outcomes_assessed` and `taught_in`↔`schedule.outcomes` mirrors, referential integrity, weights sum to 100 | passport_keeper on every load; CI |
 | `scripts/check_alignment_gate.py` | Gate 1.5 checks A1–D3 executed verbatim; honors dismissed findings; PASS / PASS-WITH-WARNINGS / FAIL verdicts | gate_runner at Gate 1.5; `align-check` mode; CI |
 | `scripts/check_registry_consistency.py` | the three-places rule: SKILL.md modes ↔ MODE_REGISTRY ↔ filesystem agent counts ↔ totals line | CI |
+| `scripts/build_dashboard.py` | renders the passport into a single-file HTML course dashboard (gates with live re-check, outcomes, assessments, weekly resources with local artifact links, ledger); deterministic build product, regenerated at any checkpoint | teaching-pipeline `dashboard` mode; CI-tested |
 | `tests/` | golden fixture (the showcase passport) must pass clean; mutation tests assert each check fires on targeted breakage | CI (`.github/workflows/ci.yml`) |
 
 Agents run the scripts when Python 3 is available and degrade to manual checklist
