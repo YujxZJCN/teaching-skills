@@ -191,6 +191,7 @@ them where they fit but never requires them — gates do not depend on extension
 | 4 | `course-publisher` | Weekly loop — announcements, weekly emails, course site, LMS packaging |
 | 4 | `ta-coordinator` | Courses with TAs — onboarding before week 1, calibration before first graded assessment, consistency checks after |
 | any | `bilingual-courseware` | Bilingual/EMI courses — glossary before the first translated artifact, sync checks on paired materials |
+| 0–1 / 4 | `cohort-analyst` | Professor holds student readiness data — pre-term diagnostic before Stage 1 design; pre-lesson questionnaires feed week-N calibration in the Stage 4 loop. Aggregates only; never auto-initiated on individuals |
 
 ## Does NOT Trigger
 

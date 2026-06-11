@@ -150,6 +150,16 @@ standalone; the pipeline dispatches them on demand at their stage.
 | captions | — | Raw transcript → accurate captions + readable transcript |
 | audio | — | Podcast-style adaptation with chapter markers |
 
+## cohort-analyst (5 modes) — Cross-cutting support (学情分析)
+
+| Mode | Command | Purpose |
+|------|---------|---------|
+| instrument | `/ts-diagnostic` | Design an ungraded pre-course diagnostic / pre-lesson questionnaire |
+| cohort-profile | `/ts-cohort` | Analyze results → aggregate readiness profile → passport `learner_profile` |
+| lesson-calibration | — | Profile → reteach/skip/pacing adjustments for a specific lesson or week |
+| grouping | — | Evidence-based grouping plans (pseudonymized) |
+| progress | — | Cohort-level trajectory re-analysis mid-term |
+
 ## bilingual-courseware (4 modes) — Cross-cutting support
 
 | Mode | Command | Purpose |
@@ -161,4 +171,4 @@ standalone; the pipeline dispatches them on demand at their stage.
 
 ---
 
-**Total: 78 modes across 14 skills (6 core + teaching-pipeline + 7 extensions), 67 agents.**
+**Total: 83 modes across 15 skills (6 core + teaching-pipeline + 8 extensions), 71 agents.**

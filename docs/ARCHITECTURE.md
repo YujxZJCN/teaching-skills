@@ -112,6 +112,7 @@ markers) and are dispatched on demand — the gates never depend on them.
 | ta-coordinator | Stage 4 | rubrics, assessment plan | TA handbooks, calibration packages, allocation plans, consistency analyses |
 | accreditation-mapper | Stage 1 / 6 | learning_outcomes, artifacts, iteration_history | outcome–standard matrices, evidence indexes, gap analyses, self-study drafts |
 | bilingual-courseware | cross-cutting | any course artifact | confirmed glossary, glossary-bound translations, sync registry, terminology audits |
+| cohort-analyst | cross-cutting (Stage 0/1 pre-term; Stage 4 weekly) | professor-held student data (ability lists, questionnaire exports) | ungraded diagnostics, aggregate cohort readiness profiles (→ `learner_profile`, aggregates only), lesson calibrations, pseudonymized grouping plans |
 
 Notable cross-links: lab-forge autograder output feeds submission-auditor's
 deterministic checks for code genres; bilingual-courseware's glossary is consumed by

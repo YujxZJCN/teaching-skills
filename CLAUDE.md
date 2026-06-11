@@ -16,7 +16,9 @@ a session where these skills are installed:
   storyboards, captions → `media-scripter` · announcements, weekly emails, course site,
   LMS packaging → `course-publisher` · TA handbooks, grading calibration, allocation →
   `ta-coordinator` · accreditation matrices, evidence packages, self-study →
-  `accreditation-mapper` · glossaries, translation, bilingual sync → `bilingual-courseware`.
+  `accreditation-mapper` · glossaries, translation, bilingual sync → `bilingual-courseware`
+  · pre-lesson diagnostics, cohort readiness analysis, grouping (学情分析) → `cohort-analyst`
+  (cohort aggregates only; an individual student's situation → `student-mentor`).
 - Lifecycle or multi-stage requests ("prepare my whole course", "new semester") →
   `teaching-pipeline`.
 - Ambiguous between guided and direct production → prefer the guided/Socratic mode;

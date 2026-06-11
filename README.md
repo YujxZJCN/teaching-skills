@@ -5,7 +5,7 @@ English | [简体中文](README.zh-CN.md)
 A comprehensive suite of Claude Code skills for university professors, covering the full
 teaching lifecycle: **design → build → assess → deliver → reflect → improve**.
 
-14 skills · 78 modes · 67-agent ensemble · 2 quality gates · 1 Course Passport
+15 skills · 83 modes · 71-agent ensemble · 2 quality gates · 1 Course Passport
 
 > **AI is your teaching assistant, not your replacement.** This suite won't teach for
 > you. It handles the structure and the grunt work — drafting outcomes, building
@@ -58,6 +58,7 @@ standalone and the pipeline dispatches them on demand:
 | **ta-coordinator** | 4 | Teaching-team operations: TA handbooks, grading calibration sessions, hours-balanced allocation, meeting agendas, cross-TA consistency checks (no league tables). |
 | **accreditation-mapper** | 1 | Outcomes → program outcomes → standards matrices with evidence status, evidence packages, gap analysis, honesty-capped self-study drafts. |
 | **bilingual-courseware** | support | Terminology-disciplined bilingual materials: professor-confirmed glossary, glossary-bound translation, paired-version sync, consistency audits. |
+| **cohort-analyst** | support | Learner analysis (学情分析): pre-lesson diagnostics, cohort readiness profiles from ability lists/questionnaires, lesson calibration, evidence-based grouping. Aggregates only — individual students route to student-mentor. |
 
 ## The pipeline
 
