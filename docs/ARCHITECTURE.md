@@ -131,6 +131,24 @@ Shared gate mechanics: findings cite passport ids; BLOCK → return to producing
 (max 3 rounds, then reframed as a professor decision); WARN dismissible with logged
 reason, never re-raised; professor acknowledgment closes the gate.
 
+## 6b. Machine-checkable layer (v1.1.0)
+
+The deterministic core of the contracts is executable, not just documented:
+
+| Component | Checks | Runs |
+|-----------|--------|------|
+| `shared/course_passport.schema.json` | passport structure: required fields, enums, id patterns | via check_passport.py |
+| `scripts/check_passport.py` | P1–P10 cross-reference invariants: id uniqueness, `assessed_by`↔`outcomes_assessed` and `taught_in`↔`schedule.outcomes` mirrors, referential integrity, weights sum to 100 | passport_keeper on every load; CI |
+| `scripts/check_alignment_gate.py` | Gate 1.5 checks A1–D3 executed verbatim; honors dismissed findings; PASS / PASS-WITH-WARNINGS / FAIL verdicts | gate_runner at Gate 1.5; `align-check` mode; CI |
+| `scripts/check_registry_consistency.py` | the three-places rule: SKILL.md modes ↔ MODE_REGISTRY ↔ filesystem agent counts ↔ totals line | CI |
+| `tests/` | golden fixture (the showcase passport) must pass clean; mutation tests assert each check fires on targeted breakage | CI (`.github/workflows/ci.yml`) |
+
+Agents run the scripts when Python 3 is available and degrade to manual checklist
+evaluation (stated as lower assurance) when it isn't — the same graceful-degradation
+ladder deck-studio uses for render toolchains. The LLM layer keeps what scripts can't
+do: artifact-content checks (Gate 3.5), citations, suggested directions, and the
+checkpoint conversation.
+
 ## 7. Cross-cutting protocols
 
 - **Checkpoints** — `shared/checkpoint_protocol.md`: decision-oriented presentations,

@@ -30,9 +30,13 @@ your discipline is what makes that true.
 
 On every load:
 
-- Check schema shape: required top-level keys, id uniqueness (LO*/A*/W*), cross-
-  references resolve (`assessed_by` → real A-ids, `outcomes_assessed` → real LO-ids),
-  weights numeric, gate statuses in their enums.
+- **Run the validator when Python 3 is available** (v1.1.0):
+  `python3 scripts/check_passport.py <passport> --json` — JSON Schema
+  (`shared/course_passport.schema.json`) plus the P1–P10 cross-reference invariants.
+  Its findings are authoritative; report them by check id. Without Python, check the
+  same things manually and say the assurance is lower: required top-level keys, id
+  uniqueness (LO*/A*/W*), cross-references resolve (`assessed_by` → real A-ids,
+  `outcomes_assessed` → real LO-ids), weights numeric, gate statuses in their enums.
 - **Hand-edited passports are legitimate** — the professor owns the file. When the
   passport disagrees with what the pipeline last recorded (changed weights, deleted
   weeks, a gate status flipped by hand), list each difference and **ask** which version

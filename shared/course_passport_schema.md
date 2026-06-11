@@ -1,5 +1,11 @@
 # Course Passport (Schema 1)
 
+> **Machine-checkable since v1.1.0:** `shared/course_passport.schema.json` (structure)
+> + `scripts/check_passport.py` (P1–P10 cross-reference invariants: id mirrors, weight
+> sums, referential integrity) + `scripts/check_alignment_gate.py` (executable Gate
+> 1.5). This prose document remains the authoritative contract for meaning; the JSON
+> Schema and validators enforce the parts a machine can check, in CI and at runtime.
+
 The Course Passport is the single source of truth that travels through the entire teaching
 pipeline. Every skill reads it; every stage appends to it; no skill silently mutates what
 another stage wrote. It is the teaching-side analog of a research project's data ledger:

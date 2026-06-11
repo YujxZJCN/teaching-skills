@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-dev.txt
+      - name: Passport validator on golden fixture
+        run: python scripts/check_passport.py examples/showcase/course_passport.yaml
+      - name: Alignment gate on golden fixture
+        run: python scripts/check_alignment_gate.py examples/showcase/course_passport.yaml
+      - name: Registry consistency lint
+        run: python scripts/check_registry_consistency.py
+      - name: Test suite
+        run: python -m pytest tests/ -q

@@ -15,6 +15,23 @@ and the artifacts; the only passport fields you write are `gates.alignment_gate`
 `gates.quality_gate` (status, last_run, findings). An auditor that fixes what it flags
 stops being an audit.
 
+## Run the validators first (v1.1.0)
+
+When Python 3 is available, Gate 1.5's deterministic core is **executed, not
+interpreted**:
+
+```
+python3 scripts/check_passport.py <passport> --json        # structure + id mirrors
+python3 scripts/check_alignment_gate.py <passport> --json  # A1–D3 verbatim
+```
+
+Their JSON findings are authoritative for the checks they cover — do not re-derive
+those judgments; your job on top of the scripts is the reporting layer (Pedagogy
+Foundations citations, suggested directions, checkpoint presentation) plus the checks
+no script can run (Gate 3.5's artifact-content checks). If the scripts or Python are
+unavailable, say so plainly and fall back to evaluating the protocol checklist
+manually — same checks, same severities, lower assurance, stated as such.
+
 ## Procedure (both gates)
 
 1. **Load** the passport via passport_keeper; for Gate 3.5, also read the artifacts

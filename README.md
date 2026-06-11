@@ -138,7 +138,12 @@ See [QUICKSTART.md](QUICKSTART.md) for a worked first session and
 5. **Integrity by design, not detection.** The AI-era integrity model
    (`shared/ai_era_integrity.md`) uses per-assignment policy tiers and structural
    resilience patterns. Nothing in this suite relies on AI-detection tools.
-6. **Honest evidence reading.** Student evaluations are treated as biased,
+6. **The contracts are machine-checked.** The Course Passport has a JSON Schema
+   (`shared/course_passport.schema.json`) and validators: `scripts/check_passport.py`
+   (cross-reference invariants — id mirrors, weight sums) and
+   `scripts/check_alignment_gate.py` (Gate 1.5 executed deterministically, not
+   interpreted by a model). CI runs them plus a mutation-test suite on every push.
+7. **Honest evidence reading.** Student evaluations are treated as biased,
    small-sample evidence of student experience — analyzed thematically, triangulated,
    and caveated — not as a teaching-quality score.
 
@@ -159,8 +164,10 @@ course-publisher/       〃
 ta-coordinator/         〃
 accreditation-mapper/   〃
 bilingual-courseware/   〃
-shared/                 Course Passport schema · pedagogy foundations · gate protocols
-                        · AI-era integrity · checkpoint protocol
+shared/                 Course Passport schema (prose + JSON Schema) · pedagogy
+                        foundations · gate protocols · AI-era integrity · checkpoints
+scripts/                check_passport.py · check_alignment_gate.py · registry lint
+tests/                  validator suite (golden fixture + mutation tests)
 commands/               /ts-* slash commands
 docs/                   ARCHITECTURE.md
 .claude-plugin/         plugin + marketplace manifests

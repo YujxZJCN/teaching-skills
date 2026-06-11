@@ -13,6 +13,12 @@ The separation matters — an auditor that fixes what it flags stops being an au
 
 ## Procedure
 
+0. **Run the executable gate first when Python 3 is available** (v1.1.0):
+   `python3 scripts/check_passport.py <passport> --json` then
+   `python3 scripts/check_alignment_gate.py <passport> --json`. Script findings are
+   authoritative for the checks they cover; your added value is the reporting layer —
+   citations, suggested directions, NOT_EVALUABLE explanations. No Python → evaluate
+   the checklist manually and state the lower assurance.
 1. Load the passport. For every check A1–A5, B1–B4, C1–C4, D1–D3:
    - Evaluate against the actual passport data
    - Emit `{check_id, severity, detail, affected_ids}` — `detail` names specific
