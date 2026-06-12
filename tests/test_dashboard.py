@@ -30,6 +30,19 @@ def test_dashboard_builds_and_covers_passport(tmp_path):
     assert "clean right now" in doc
 
 
+def test_dashboard_enriched_sections(tmp_path):
+    out = build_dashboard.build(GOLDEN, tmp_path / "dash.html")
+    doc = out.read_text(encoding="utf-8")
+    for marker in ("Course at a glance", "Grade composition", "Outcomes by Bloom level",
+                   "Alignment matrix", "Policies", "Learner profile",
+                   "Iteration history", "conic-gradient"):
+        assert marker in doc, f"enriched section missing: {marker}"
+    # NEEDS PROFESSOR INPUT markers are highlighted, not silently rendered
+    assert "<mark class=np>" in doc
+    # chips cross-link to row anchors
+    assert 'href="#LO1"' in doc and 'href="#A1"' in doc
+
+
 def test_dashboard_flags_missing_artifacts(tmp_path):
     p = yaml.safe_load(GOLDEN.read_text(encoding="utf-8"))
     p["artifacts"].append({"path": "nonexistent_file.md", "type": "lesson",
