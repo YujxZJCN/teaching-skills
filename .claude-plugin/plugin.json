@@ -1,6 +1,6 @@
 {
   "name": "teaching-skills",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Comprehensive teaching lifecycle suite for university professors: design → build → assess → deliver → reflect → improve. 15 skills, 84 modes, 71-agent ensemble, Course Passport state, alignment + quality gates, spec-driven submission auditing, AI-era assessment integrity, plus extensions: slide-deck rendering, executable labs, video scripting, course publishing, TA coordination, accreditation mapping, bilingual courseware, learner analysis (学情分析), course dashboard.",
   "author": {
     "name": "Jiaxing Yu"
