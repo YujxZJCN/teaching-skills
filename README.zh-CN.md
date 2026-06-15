@@ -170,6 +170,22 @@ skills/                 供插件自动发现的符号链接
 适用于任何语言。在技能的 `description` frontmatter 中加入你所用语言的关键词，可提升
 触发匹配效果。
 
+## 跨工具可移植性
+
+本仓库是 **Claude Code** 发行版（原生技能、`/plugin` 安装、`/ts-*` 斜杠命令）。
+整套工具分三层，可移植程度不同：
+
+- **技能本体**（`SKILL.md` 内容）遵循 Anthropic 的 Agent Skills 格式，也可通过
+  Skills 功能在其他 Claude 界面（claude.ai、Claude 桌面端、IDE 插件）中使用。
+- **Python 工具链**（`scripts/`、JSON Schema、课程仪表盘）完全与工具无关——
+  任何装有 `python3` 的终端都能运行，无需 AI。
+- **插件封装**（插件市场安装、斜杠命令）是 Claude Code 专属的。
+
+针对 **OpenAI Codex CLI**，由本仓库的 `scripts/build_codex.py` 生成姊妹发行版，
+发布于 [`YujxZJCN/teaching-skills-codex`](https://github.com/YujxZJCN/teaching-skills-codex)
+——把整套工具打包为单个 Codex 技能并提供 `ts-*` 别名。它是构建产物
+（自动生成、绝不手改），因此永远不会与本源仓库产生偏差。
+
 ## 许可证
 
 MIT。本项目架构（技能/智能体/门控/护照模式）受

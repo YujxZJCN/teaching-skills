@@ -182,6 +182,24 @@ English and Simplified Chinese trigger keywords ship by default; intent-based mo
 (socratic design, mid-entry routing) work in any language. Add your language's keywords
 to a skill's `description` frontmatter to improve trigger matching.
 
+## Portability
+
+This repo is the **Claude Code** distribution (native skills, `/plugin` install, `/ts-*`
+slash commands). The suite is three layers with different reach:
+
+- **Skills** (the `SKILL.md` content) follow Anthropic's Agent Skills format and also
+  work on other Claude surfaces (claude.ai, Claude Desktop, the IDE extensions) via the
+  Skills feature.
+- **The Python tooling** (`scripts/`, the JSON Schema, the dashboard) is fully
+  tool-agnostic — it runs in any terminal with `python3`, no AI required.
+- **The plugin packaging** (marketplace install, slash commands) is Claude-Code-specific.
+
+For **OpenAI Codex CLI**, a sibling distribution is generated from this repo by
+`scripts/build_codex.py` and published at
+[`YujxZJCN/teaching-skills-codex`](https://github.com/YujxZJCN/teaching-skills-codex) —
+the whole suite as a single Codex skill with `ts-*` aliases. It is a build product
+(regenerated, never hand-edited), so it never drifts from this source.
+
 ## License
 
 MIT. The architecture (skills/agents/gates/passport pattern) is inspired by

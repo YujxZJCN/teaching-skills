@@ -20,5 +20,7 @@ jobs:
         run: python scripts/check_alignment_gate.py examples/showcase/course_passport.yaml
       - name: Registry consistency lint
         run: python scripts/check_registry_consistency.py
+      - name: Codex package builds
+        run: python scripts/build_codex.py -o /tmp/codex-pkg --date 2026-06-15
       - name: Test suite
         run: python -m pytest tests/ -q
