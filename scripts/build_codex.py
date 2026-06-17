@@ -410,7 +410,9 @@ and its Codex sibling.
 # --- path rewriting (keep vendored references valid in the ts/ layout) --------
 
 OWN_DIR_SEGMENTS = {"templates", "references", "agents", "examples"}
-ROOT_SEGMENTS = {"shared", "scripts", "docs"}
+# "docs" is intentionally absent: docs/ is not vendored (repo-maintainer documentation),
+# so a `docs/…` reference is left bare rather than rewritten to a non-existent ts/docs/ path.
+ROOT_SEGMENTS = {"shared", "scripts"}
 BACKTICK = re.compile(r"`([^`\n ]+)`")
 
 
