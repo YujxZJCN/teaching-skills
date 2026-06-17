@@ -34,7 +34,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # Independent Codex-package version (tracks the adapter, not the suite).
-CODEX_VERSION = "0.1.0"
+CODEX_VERSION = "0.2.0"
 SUITE_NAME = "teaching-suite"
 
 # Directories that are NOT skills (no SKILL.md, or infrastructure).
