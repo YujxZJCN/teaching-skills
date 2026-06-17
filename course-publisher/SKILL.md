@@ -118,7 +118,10 @@ policy gap, routed to `course-designer` rather than improvised here.
 - `comms/announcement_<topic>.md`, `comms/week_<N>_email.md` — drafts from
   `templates/weekly_email_template.md`, each with its fact-trace block
 - `site/` — static course website per `templates/course_site_structure.md`
-- `lms_package/` — upload-ready structure + `upload_checklist.md`
+- `lms_package/` — upload-ready structure + `upload_checklist.md`. For an *importable*
+  package (not just a zip), run `scripts/export_lms.py --to imscc` to build an IMS Common
+  Cartridge (`.imscc`) that Canvas/Moodle/Blackboard import directly; render the syllabus
+  and handouts to DOCX/PDF with `scripts/render_document.py`
 - `comms/faq.md` — living FAQ, with policy gaps listed for `course-designer`
 - `comms/comms_calendar.md` — planned vs sent, maintained by `comms_planner_agent`
 

@@ -186,6 +186,10 @@ modified materials carry a non-removable verify reminder and never name the cond
   curving methods and their fairness tradeoffs, small-N caveats
 - `references/peer_assessment_guide.md` — peer-assessment validity evidence,
   contribution-adjustment formulas, and pitfalls
+- `references/lms_export_format.md` — the question-set JSON the item writers emit so an
+  exam/quiz reaches the LMS quiz engine. Export with `scripts/export_lms.py` (GIFT for
+  Moodle, QTI 2.1 for Canvas/Blackboard); render paper versions to DOCX/PDF with
+  `scripts/render_document.py`
 - `templates/test_blueprint_template.md`
 - `templates/project_brief_template.md`
 - `templates/grade_report_template.md` — aggregate-only, non-removable verify-before-posting note
