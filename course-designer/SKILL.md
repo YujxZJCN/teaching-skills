@@ -42,6 +42,7 @@ Check whether my course outline is internally aligned
 | `syllabus-only` | "Write/update my syllabus"; design already exists | Syllabus from existing design (asks for missing pieces; does not invent policy) |
 | `redesign` | Existing course + dissatisfaction or new constraints | Diagnostic against the 6 checks below → prioritized change plan → updated design |
 | `align-check` | "Is my course aligned?" / pipeline Gate 1.5 standalone | Alignment Gate report (`shared/alignment_gate_protocol.md`), read-only |
+| `async-design` | "Move this course online / async / hybrid"; modality needs design adaptation, not just a flag | Course restructured into self-contained async modules + sync/async split + engagement design + online accessibility defaults; passport `modality` + `schedule` updated |
 
 **Mode dispatch rule:** ambiguous between `socratic` and `full` → prefer `socratic`; a
 professor with a clear spec will say so, and guided-first wastes less work than an
@@ -55,8 +56,10 @@ unwanted full design. Detect intent in any language.
 | Writing the actual exam, rubric, or project brief | `assessment-architect` |
 | Full design → materials → assessment run | `teaching-pipeline` |
 | Analyzing student evaluations of an existing course | `teaching-reflector` |
+| Redesigning an assessment so it survives unproctored/async use (`integrity-check`) | `assessment-architect` |
+| Producing the actual recorded lecture videos / captions for an online course | `media-scripter` |
 
-## Agent Team (6)
+## Agent Team (7)
 
 | Agent | Role |
 |-------|------|
@@ -66,6 +69,7 @@ unwanted full design. Detect intent in any language.
 | `schedule_planner_agent` | Maps outcomes to a week-by-week arc with spacing/interleaving (Pedagogy Foundations §5); balances workload across weeks |
 | `syllabus_writer_agent` | Assembles syllabus from confirmed design; policy sections flag institution-specific gaps rather than inventing them |
 | `alignment_auditor_agent` | Runs the Alignment Gate checklist; read-only; reports findings by passport id |
+| `async_designer_agent` | Adapts a confirmed design for online/async/hybrid modality: self-contained modules, sync-vs-async split, async engagement, online accessibility (UDL); routes assessment redesign to assessment-architect |
 
 ## Workflow (`full` mode)
 
@@ -92,6 +96,15 @@ Phase 5  SYLLABUS    — syllabus_writer assembles `templates/syllabus_template.
 `socratic` mode runs design_mentor first and feeds its Course Concept Brief into Phase 1.
 `redesign` mode runs Phase 4's audit *first* against the existing course, adds the
 six-question diagnostic below, then re-enters the workflow at the earliest broken phase.
+
+`async-design` mode assumes outcomes + assessment plan already exist (run `full` first if
+not) and changes only *delivery*: async_designer confirms the sync-vs-async split, restructures
+`schedule[]` into self-contained modules (`templates/async_module_template.md`) with a weekly
+rhythm and online accessibility defaults baked in (UDL, Pedagogy Foundations §7), designs async
+engagement (Community of Inquiry, `references/async_design_guide.md`), and re-estimates
+time-on-task for self-directed learners. Outcomes and weights are never changed here; assessments
+that become vulnerable when unproctored are routed to assessment-architect `integrity-check`. The
+mode writes `course.modality` and the restructured `schedule[]`, then checkpoints.
 
 ### Redesign diagnostic
 
@@ -127,12 +140,17 @@ six-question diagnostic below, then re-enters the workflow at the earliest broke
 - `design_rationale.md` — why each major choice was made (feeds Stage 6 reflection and
   next-iteration redesign)
 - (`align-check` mode) `alignment_report.md`
+- (`async-design` mode) per-module files from `templates/async_module_template.md` + updated
+  passport `modality`/`schedule`
 
 ## References
 
 - `references/outcome_verbs.md` — Bloom-level verb tables + weak-verb rewrite patterns
 - `references/syllabus_checklist.md` — completeness checklist incl. AI-use policy section
+- `references/async_design_guide.md` — online/async design evidence: Community of Inquiry,
+  chunking, regular-substantive-interaction, async engagement patterns; honest about transfer
 - `templates/syllabus_template.md`
 - `templates/course_passport_starter.yaml`
+- `templates/async_module_template.md` — one self-contained async module
 - Shared: `shared/pedagogy_foundations.md`, `shared/alignment_gate_protocol.md`,
   `shared/ai_era_integrity.md`, `shared/checkpoint_protocol.md`

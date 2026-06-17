@@ -4,7 +4,7 @@ Canonical list of every mode in the suite. Slash commands in `commands/` map 1:1
 entries here. When adding a mode: update the skill's SKILL.md, this registry, and
 `docs/ARCHITECTURE.md` together.
 
-## course-designer (6 modes) — Stage 1
+## course-designer (7 modes) — Stage 1
 
 | Mode | Command | Purpose |
 |------|---------|---------|
@@ -14,6 +14,7 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | syllabus-only | `/ts-syllabus` | Syllabus from existing design |
 | redesign | `/ts-redesign` | Diagnostic + prioritized redesign of existing course |
 | align-check | `/ts-align` | Read-only constructive-alignment audit (Gate 1.5 standalone) |
+| async-design | — | Adapt a confirmed design for online/async/hybrid: modules, sync/async split, engagement, accessibility |
 
 ## lesson-builder (8 modes) — Stage 2
 
@@ -28,7 +29,7 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | flipped | — | Pre-class spec + in-class application session |
 | week-batch | — (pipeline) | Build a passport week / range of weeks |
 
-## assessment-architect (8 modes) — Stage 3
+## assessment-architect (11 modes) — Stage 3
 
 | Mode | Command | Purpose |
 |------|---------|---------|
@@ -40,8 +41,11 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | integrity-check | `/ts-integrity` | AI-resilience audit per `shared/ai_era_integrity.md` |
 | item-analysis | — | Post-exam difficulty / discrimination / distractor analysis |
 | answer-key | — | Independent worked key for an existing instrument |
+| grade-analysis | — | Final-grade distribution, shape diagnostics, cutoff/curve what-ifs (aggregates only) |
+| group-assessment | — | Graded group-project + peer-assessment design with individual accountability |
+| accommodate | — | Operationalize an already-granted accommodation into a modified instrument |
 
-## student-mentor (6 modes) — Stage 4
+## student-mentor (7 modes) — Stage 4
 
 | Mode | Command | Purpose |
 |------|---------|---------|
@@ -51,6 +55,7 @@ entries here. When adding a mode: update the skill's SKILL.md, this registry, an
 | student-email | — | Difficult communications drafting |
 | office-hours | — | Office-hours prep and triage |
 | mentoring-plan | — | Advisee expectations doc + milestone map |
+| integrity-case | — | Suspected-misconduct companion: factual evidence record + institutional-process routing (no verdict, ever) |
 
 ## teaching-reflector (6 modes) — Stage 5
 
@@ -172,4 +177,4 @@ standalone; the pipeline dispatches them on demand at their stage.
 
 ---
 
-**Total: 84 modes across 15 skills (6 core + teaching-pipeline + 8 extensions), 71 agents.**
+**Total: 89 modes across 15 skills (6 core + teaching-pipeline + 8 extensions), 76 agents.**

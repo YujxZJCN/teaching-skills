@@ -81,8 +81,8 @@ Write discipline: append-don't-overwrite; no skill mutates another stage's field
                       teaching-pipeline (orchestrator, 4 agents)
                   /       |          |           |          |         \
      course-designer  lesson-   assessment-  student-  submission-  teaching-
-       (6 agents)     builder   architect    mentor    auditor      reflector
-           |         (6 agents) (7 agents)  (5 agents) (4 agents)  (6 agents)
+       (7 agents)     builder   architect    mentor    auditor      reflector
+           |         (6 agents) (10 agents) (6 agents) (4 agents)  (6 agents)
            └─────────────┴──────────┴───────────┴───────────┴──────────┘
                                       |
             shared/: course_passport_schema · pedagogy_foundations ·

@@ -45,6 +45,7 @@ Set up a mentoring expectations document for my new PhD student
 | `student-email` | Grade disputes, integrity concerns, extension requests, bad news | Difficult-communication draft: acknowledge → facts → decision → path forward, with what-not-to-put-in-writing flags |
 | `office-hours` | "Prepare for office hours" / "my office hours are empty or chaotic" | Anticipated-question prep from current week's material, triage strategy, productivity tactics |
 | `mentoring-plan` | New advisee, thesis student, struggling mentorship | Mutual expectations doc from `templates/mentoring_expectations_template.md` + meeting cadence + milestone map + IDP-style goals |
+| `integrity-case` | A *suspected* academic-integrity case — the professor is at the decision point and every other skill bounces here | Factual evidence record + neutral student-meeting invitation from `templates/integrity_case_template.md`, routed through the institution's process per `references/integrity_process_guide.md`. **No verdict, no guilt estimate, no sanction — ever.** Nothing enters the passport |
 
 **Mode dispatch rule:** when a request mixes modes (a struggling student who also disputed
 a grade), run the modes in the order the professor must act, not the order mentioned —
@@ -57,8 +58,10 @@ and detect intent in any language.
 | Designing the rubric the feedback will use | `assessment-architect` |
 | Analyzing whole-class evaluation data or course-level patterns | `teaching-reflector` |
 | Writing course policies (late work, regrades, AI use) | `course-designer` |
+| Designing AI-resilient assessments so misconduct is harder (prevention, not a live case) | `assessment-architect` (`integrity-check`) |
+| Deciding guilt, choosing a sanction, or interpreting integrity law | Your institution's academic-integrity office — `integrity-case` routes there, it never adjudicates |
 
-## Agent Team (5)
+## Agent Team (6)
 
 | Agent | Role |
 |-------|------|
@@ -67,6 +70,7 @@ and detect intent in any language.
 | `recommendation_writer_agent` | Runs the intake interview first; drafts only from intake answers; flags bias-pattern language; offers the decline-gracefully alternative when evidence is thin |
 | `communication_coach_agent` | Difficult emails and conversations: de-escalation structure, consult-chair flags for legally sensitive territory, role-play for in-person talks |
 | `mentoring_planner_agent` | Advisee/grad-student structures: mutual expectations docs, milestone maps, meeting templates, stalled-advisee early-warning responses |
+| `integrity_case_agent` | Suspected-integrity-case companion: records evidence factually, routes to the institution's process, drafts the neutral student notice — never a verdict, guilt estimate, or sanction |
 
 ## Person-affecting outputs — the hard rule
 
@@ -111,6 +115,22 @@ with mode-specific phases in each agent file. `recommendation-letter` mode never
 the intake interview, even under deadline pressure: a fast letter built on invented
 content is worse than a late one.
 
+## Workflow note (`integrity-case` mode)
+
+This is the suite's most legally and ethically exposed mode, so the boundaries are wider
+than the others: the skill **never** renders a verdict, judges guilt, estimates a
+probability of cheating, or recommends a sanction. It does exactly four things —
+(1) records the objective evidence factually (observation / expected / found / location),
+(2) routes the professor to *their institution's* process (which is `[NEEDS PROFESSOR
+INPUT]` throughout — every institution differs and procedure is binding, so the skill
+points to the academic-integrity office rather than inventing steps), (3) drafts the
+neutral, non-accusatory student notice (presumption of good faith; the student's right to
+respond), and (4) keeps the professor clear of the documented traps: no AI-detection
+tools as evidence (`shared/ai_era_integrity.md` §1), no public accusation, no unilateral
+sanction, no privacy breach. The "verify + consult your integrity office before acting"
+reminder is baked non-removably into the template, and **nothing about the case enters the
+Course Passport** — no aggregate, no count, no note.
+
 ## Iron rules
 
 1. **Evidence-bound.** Every evaluative claim traces to professor-provided material;
@@ -142,6 +162,9 @@ content is worse than a late one.
 - `communication_draft.md` — email or conversation script
 - `office_hours_prep.md` — anticipated questions, triage plan
 - `mentoring_expectations.md` — from `templates/mentoring_expectations_template.md`
+- `integrity_case_record.md` (factual evidence record + neutral student-meeting
+  invitation) — from `templates/integrity_case_template.md`; renders no verdict and names
+  no sanction, and never enters the Course Passport
 
 ## References
 
@@ -149,9 +172,14 @@ content is worse than a late one.
   method; worked bad→good rewrites
 - `references/recommendation_letter_guide.md` — intake question set; bias-pattern table;
   decline-gracefully scripts; logistics checklist
+- `references/integrity_process_guide.md` — the generic shape of a fair integrity process
+  (notice → evidence → student response → institutional adjudication), with the
+  institution-specific steps flagged `[NEEDS PROFESSOR INPUT]`, and the do-not-do list
+  (no detection tools, no public accusation, no unilateral sanction, no privacy breach)
 - `templates/feedback_comments_template.md`
 - `templates/recommendation_letter_template.md` + `templates/intake_record_template.md`
 - `templates/intervention_outreach_template.md`
 - `templates/mentoring_expectations_template.md`
+- `templates/integrity_case_template.md`
 - Shared: `shared/pedagogy_foundations.md` (§8), `shared/checkpoint_protocol.md`
   (person-affecting hard rule), `shared/ai_era_integrity.md`

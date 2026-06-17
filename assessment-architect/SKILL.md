@@ -34,6 +34,9 @@ Build a rubric for the term paper
 Design the semester project brief, AI-disclosure tier
 我的考试结果在这个表里，帮我做试题分析
 Audit my take-home final for AI vulnerability
+Close my gradebook — show me what the A/B cutoff choices do
+Design the group project with peer assessment
+Make the 1.5×-time version of the midterm for a granted accommodation
 ```
 
 ## Modes
@@ -48,6 +51,9 @@ Audit my take-home final for AI vulnerability
 | `integrity-check` | "Is this AI-proof?"; pipeline Stage 3 audit | AI-resilience audit per `shared/ai_era_integrity.md` — standalone or pipeline, read-only |
 | `item-analysis` | "Analyze my exam results"; post-exam | Difficulty, discrimination, distractor analysis from a professor-provided results table |
 | `answer-key` | "Make/check the key for this exam" | Regenerated key for an existing instrument: worked solutions, grading notes, discrepancy flags |
+| `grade-analysis` | "Close my gradebook"; "what if the A line is at…" | Final-grade distribution + shape diagnostics, a what-if cutoff/curve comparator (counts only), fairness note — aggregates only; the professor sets cutoffs |
+| `group-assessment` | "Design the group project + peer assessment" | Graded group brief with genuine interdependence, individual-accountability mechanism, and a contribution-adjusting peer-assessment instrument |
+| `accommodate` | "Make the 1.5×-time / alt-format version of this exam" | Modified assessment material for an *already-granted* accommodation, equivalent rigor preserved + logistics note |
 
 **Mode dispatch rule:** an instrument request that names no passport assessment runs
 standalone — intake the context, build, and offer passport write-back at exit (Passport
@@ -61,8 +67,11 @@ Iron Rule 5). Detect intent in any language.
 | Practice activities and exercises that aren't graded | `lesson-builder` |
 | Writing feedback comments on a specific student's work | `student-mentor` |
 | Full design → materials → assessment run | `teaching-pipeline` |
+| Deciding whether an accommodation is granted / who is eligible | disability/accessibility office (skill operationalizes an *already-granted* one) |
+| Accommodating lecture, slide, or reading materials (not assessments) | `lesson-builder` / `deck-studio` |
+| Analyzing a *named* borderline student's grade case | `student-mentor` (grade-analysis is cohort aggregates only) |
 
-## Agent Team (7)
+## Agent Team (10)
 
 | Agent | Role |
 |-------|------|
@@ -73,6 +82,9 @@ Iron Rule 5). Detect intent in any language.
 | `integrity_auditor_agent` | Runs the `shared/ai_era_integrity.md` audit procedure; read-only; sets `ai_resilience`; never recommends detectors |
 | `answer_key_agent` | Independently *works* every item to produce the key + worked solutions; flags discrepancies, marks `[VERIFY]` where uncertain |
 | `item_analyst_agent` | Post-exam statistics: difficulty, discrimination, distractor performance; per-item action recommendations |
+| `grade_analyst_agent` | Closes the gradebook: weighted final-grade distribution, shape diagnostics, what-if cutoff/curve comparator, fairness note — aggregates only; never sets cutoffs |
+| `group_designer_agent` | Designs graded group projects with genuine interdependence, an individual-accountability mechanism, and a contribution-adjusting peer-assessment instrument |
+| `accommodation_designer_agent` | Operationalizes an *already-granted* accommodation into modified assessment materials with equivalent rigor; never decides eligibility, never names the condition |
 
 ## Workflow (`exam` mode)
 
@@ -106,6 +118,26 @@ still shown, still confirmed). `rubric` and `project-brief` go straight to their
 then Phase 4. `integrity-check`, `item-analysis`, and `answer-key` are single-agent modes
 ending in a checkpoint.
 
+`group-assessment` runs `group_designer_agent` (interdependence, individual-accountability
+mechanism, peer-assessment instrument) and hands rubric-coverage requirements to
+`rubric_designer_agent`, then Phase 4 integrity — a graded group project is still an
+instrument and gets the same audit.
+
+`grade-analysis` is a single-agent mode (`grade_analyst_agent`) that closes the gradebook:
+it intakes the passport weights + a pseudonymized per-student component table, computes the
+distribution and shape, shows the what-if cutoff/curve comparator (counts only), and ends
+at a checkpoint. **Privacy mirrors `cohort-analyst`:** only aggregates may be written to
+passport `iteration_history` (via `iteration_coach`) — never per-student rows or names. The
+professor sets cutoffs; the skill never does.
+
+`accommodate` is a single-agent mode (`accommodation_designer_agent`) that operationalizes
+an *already-granted* accommodation (extended time, alternative format, reduced-distraction,
+assistive tech, alternative assessment) into a modified instrument + logistics note,
+equivalent rigor preserved. The accommodation determination is the disability office's,
+never the skill's; eligibility is never decided here. Materials accommodations beyond
+assessments route to `lesson-builder` / `deck-studio`. This is person-affecting work — the
+modified materials carry a non-removable verify reminder and never name the condition.
+
 ## Iron rules
 
 1. **Blueprint first, always.** No item is written before the professor confirms the
@@ -136,6 +168,12 @@ ending in a checkpoint.
 - `assessments/<id>_rubric.md` — when a rubric is built
 - (`integrity-check` mode) `integrity_audit.md`
 - (`item-analysis` mode) `item_analysis_report.md` + passport `iteration_history` evidence entry
+- (`grade-analysis` mode) `grade_report.md` from `templates/grade_report_template.md`
+  (aggregate-only) + an **aggregate** `iteration_history` evidence line (via `iteration_coach`)
+- (`group-assessment` mode) `assessments/<id>_<slug>.md` group brief + peer-assessment form
+  from `templates/group_project_template.md`, plus its `assessments/<id>_rubric.md`
+- (`accommodate` mode) `assessments/<id>_<accommodation>_variant.md` (modified instrument)
+  + logistics note — person-affecting, draft-only, never names the condition
 - Passport updates: `assessment_plan[].artifact_ref`, `assessment_plan[].ai_resilience`, `artifacts[]`
 
 ## References
@@ -144,8 +182,14 @@ ending in a checkpoint.
   higher-order item patterns, bank-variant discipline
 - `references/rubric_patterns.md` — rubric-type choice logic, descriptor rules,
   common defects, TA calibration protocol
+- `references/grade_analysis_guide.md` — distribution shapes, cutoff-setting ethics,
+  curving methods and their fairness tradeoffs, small-N caveats
+- `references/peer_assessment_guide.md` — peer-assessment validity evidence,
+  contribution-adjustment formulas, and pitfalls
 - `templates/test_blueprint_template.md`
 - `templates/project_brief_template.md`
+- `templates/grade_report_template.md` — aggregate-only, non-removable verify-before-posting note
+- `templates/group_project_template.md` — TILT brief + roles + peer-assessment form
 - Shared: `shared/pedagogy_foundations.md`, `shared/ai_era_integrity.md`,
   `shared/quality_gate_protocol.md`, `shared/checkpoint_protocol.md`,
   `shared/course_passport_schema.md`
