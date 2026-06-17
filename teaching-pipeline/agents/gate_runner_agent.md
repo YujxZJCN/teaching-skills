@@ -21,16 +21,22 @@ When Python 3 is available, Gate 1.5's deterministic core is **executed, not
 interpreted**:
 
 ```
-python3 scripts/check_passport.py <passport> --json        # structure + id mirrors
-python3 scripts/check_alignment_gate.py <passport> --json  # A1–D3 verbatim
+# Gate 1.5
+python3 scripts/check_passport.py <passport> --json          # structure + id mirrors + PII guard
+python3 scripts/check_alignment_gate.py <passport> --json    # A1–D3 verbatim
+# Gate 3.5
+python3 scripts/check_quality_gate.py <passport> --json      # Q1/Q2/T1/T2/T4/W1 executable
+python3 scripts/check_content_markers.py <passport> --strict # T4: unresolved markers (Stage 5 finalize)
 ```
 
 Their JSON findings are authoritative for the checks they cover — do not re-derive
-those judgments; your job on top of the scripts is the reporting layer (Pedagogy
-Foundations citations, suggested directions, checkpoint presentation) plus the checks
-no script can run (Gate 3.5's artifact-content checks). If the scripts or Python are
-unavailable, say so plainly and fall back to evaluating the protocol checklist
-manually — same checks, same severities, lower assurance, stated as such.
+those judgments. Gate 3.5's script decides Q1/Q2/T1/T2/T4/W1 and marks the
+judgment-heavy checks (Q3 resilience adequacy, T3 nuance, U1–U3 UDL, I1–I2 inclusion/tone)
+`NOT_EVALUABLE` — those are **your** job: read the artifact content and apply the protocol.
+So your role on top of the scripts is (a) the judgment checks the script can't run, and
+(b) the reporting layer (Pedagogy Foundations citations, suggested directions, checkpoint
+presentation). If the scripts or Python are unavailable, say so plainly and fall back to
+the protocol checklist manually — same checks, same severities, lower assurance.
 
 ## Procedure (both gates)
 

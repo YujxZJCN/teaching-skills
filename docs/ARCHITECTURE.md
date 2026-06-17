@@ -1,4 +1,4 @@
-# Teaching Skills Architecture (v1.1.0)
+# Teaching Skills Architecture (v1.1.2)
 
 Full pipeline view: flow, stage matrix, passport data flow, skill dependency graph, and
 gate inventory. Per-mode reference: `MODE_REGISTRY.md`. Per-skill detail: each skill's

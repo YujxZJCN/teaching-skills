@@ -18,7 +18,11 @@ jobs:
         run: python scripts/check_passport.py examples/showcase/course_passport.yaml
       - name: Alignment gate on golden fixture
         run: python scripts/check_alignment_gate.py examples/showcase/course_passport.yaml
-      - name: Registry consistency lint
+      - name: Quality gate on golden fixture
+        run: python scripts/check_quality_gate.py examples/showcase/course_passport.yaml
+      - name: Internal link check
+        run: python scripts/check_links.py
+      - name: Registry + manifest + doc-version consistency lint
         run: python scripts/check_registry_consistency.py
       - name: Codex package builds
         run: python scripts/build_codex.py -o /tmp/codex-pkg --date 2026-06-15

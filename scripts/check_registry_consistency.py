@@ -127,11 +127,57 @@ def main(argv=None):
         if t_agents != total_agents:
             problems.append(f"R5: totals line says {t_agents} agents, counted {total_agents}")
 
+    # R6-R9: JSON manifests + ARCHITECTURE version/counts (the drift we kept hitting by hand)
+    check_manifests_and_docs(root, total_modes, len(skill_dirs), total_agents, problems)
+
     for p in problems:
         print(p)
     print(f"{'INCONSISTENT' if problems else 'CONSISTENT'} — "
           f"{len(skill_dirs)} skills, {total_modes} modes, {total_agents} agents")
     return 1 if problems else 0
+
+
+def _counts_in(text):
+    """Extract (skills, modes, agents) counts from a description string, any order."""
+    s = re.search(r"(\d+)\s+skills", text)
+    m = re.search(r"(\d+)\s+modes", text)
+    a = re.search(r"(\d+)[\s-]+agent", text)
+    return (int(s.group(1)) if s else None,
+            int(m.group(1)) if m else None,
+            int(a.group(1)) if a else None)
+
+
+def check_manifests_and_docs(root, modes, skills, agents, problems):
+    """R6: plugin/marketplace versions agree. R7/R8: their description counts match
+    the filesystem. R9: docs/ARCHITECTURE.md version header matches plugin.json."""
+    import json as _json
+    plugin_p = root / ".claude-plugin" / "plugin.json"
+    market_p = root / ".claude-plugin" / "marketplace.json"
+    arch_p = root / "docs" / "ARCHITECTURE.md"
+
+    plugin_ver = None
+    if plugin_p.exists():
+        plugin = _json.loads(plugin_p.read_text(encoding="utf-8"))
+        plugin_ver = plugin.get("version")
+        s, m, a = _counts_in(plugin.get("description", ""))
+        for label, got, want in (("skills", s, skills), ("modes", m, modes), ("agents", a, agents)):
+            if got is not None and got != want:
+                problems.append(f"R7: plugin.json description says {got} {label}, filesystem has {want}")
+    if market_p.exists():
+        market = _json.loads(market_p.read_text(encoding="utf-8"))
+        mver = market.get("plugins", [{}])[0].get("version")
+        if plugin_ver and mver and mver != plugin_ver:
+            problems.append(f"R6: marketplace.json version {mver} != plugin.json version {plugin_ver}")
+        for p in market.get("plugins", []):
+            s, m, a = _counts_in(p.get("description", ""))
+            for label, got, want in (("skills", s, skills), ("modes", m, modes)):
+                if got is not None and got != want:
+                    problems.append(f"R8: marketplace.json says {got} {label}, filesystem has {want}")
+    if arch_p.exists() and plugin_ver:
+        head = arch_p.read_text(encoding="utf-8").splitlines()[0]
+        vm = re.search(r"v(\d+\.\d+\.\d+)", head)
+        if vm and vm.group(1) != plugin_ver:
+            problems.append(f"R9: ARCHITECTURE.md header v{vm.group(1)} != plugin.json version {plugin_ver}")
 
 
 if __name__ == "__main__":
