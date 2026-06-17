@@ -41,9 +41,11 @@ SUITE_NAME = "teaching-suite"
 NON_SKILL_DIRS = {"shared", "scripts", "commands", "docs", "tests", "skills",
                   "examples", "dist", ".git", ".github", ".claude-plugin"}
 
-# Scripts that travel to Codex (tool-agnostic). The generator itself does not.
+# Scripts that travel to Codex (tool-agnostic). The generator + repo-dev linters do not.
 VENDORED_SCRIPTS = ["check_passport.py", "check_alignment_gate.py",
-                    "check_registry_consistency.py", "build_dashboard.py"]
+                    "check_quality_gate.py", "check_content_markers.py",
+                    "check_registry_consistency.py", "build_dashboard.py",
+                    "render_document.py", "export_lms.py"]
 
 
 def sh(*args):
