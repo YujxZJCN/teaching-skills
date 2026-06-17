@@ -35,15 +35,31 @@ the outcome's level: an "analyze" outcome assessed only by recall items is misal
 **In practice:** every learning outcome in the Course Passport carries a `bloom_level`
 tag; item writers check item level against outcome level.
 
+**Honest limits:** the six levels are a useful planning scaffold, not a validated
+strict hierarchy — real tasks blend levels, and "higher" is not automatically "better"
+(a course rightly weighted toward fluent *apply* is not deficient). Bloom is the
+*cognitive* dimension only; it ignores the knowledge dimension (factual/conceptual/
+procedural/metacognitive — the full Anderson-Krathwohl table) and the affective and
+psychomotor domains, which matter in labs, studios, and clinics. Use it to check
+alignment and avoid level-inflation, not as the sole lens on what a course is for.
+
 ## 4. Active learning (Freeman et al., 2014, PNAS 111:8410)
 
-Meta-analysis of 225 studies: active learning raised exam performance ~6% and lecturing
-increased failure rates 1.5× relative to active sections, across STEM disciplines.
-Lecture is not eliminated — it is punctuated. Even 80-person lectures support
-think-pair-share, peer instruction with polling, minute papers, and worked-example pauses.
+Meta-analysis of 225 STEM studies: active learning raised exam performance ~6% (≈0.47 SD)
+and lecturing increased failure rates ~1.5× relative to active sections. Lecture is not
+eliminated — it is punctuated. Even 80-person lectures support think-pair-share, peer
+instruction with polling, minute papers, and worked-example pauses.
 
-**In practice:** lesson-builder defaults to interleaving at least one active segment per
-20–25 minutes of lecture, scaled to class size and modality.
+**Honest caveats:** the effect is an *average* over heterogeneous interventions of varying
+quality — "active learning" is a broad label, not one method, and badly-run active
+segments can underperform a good lecture. The Freeman meta-analysis is STEM; transfer to
+seminar/studio/discussion-based humanities teaching is plausible but not the same evidence
+base. And implementation matters more than the label: clear task, accountability, and
+debrief are what make a segment work.
+
+**In practice:** lesson-builder defaults to interleaving at least one *well-structured*
+active segment per 20–25 minutes of lecture, scaled to class size and modality — the
+structure (task/accountability/debrief), not the mere presence of an activity, is the point.
 
 ## 5. Retrieval practice & spacing (Roediger & Karpicke, 2006; Dunlosky et al., 2013)
 
@@ -91,6 +107,13 @@ scaffolding as expertise grows (expertise-reversal effect).
 **In practice:** lesson-builder's slide outlines follow one-idea-per-slide and
 signal-before-detail; lecture notes interleave worked examples with practice.
 
+**Honest caveats:** Cognitive Load Theory's three-way split (intrinsic/extraneous/germane)
+is debated — germane load in particular is hard to measure and some researchers fold it
+in — and a few classic effects have had mixed replication. The robust, usable core is
+narrow but real: don't split attention across sources, cut decoration, and give novices
+worked examples. Treat the finer apparatus as heuristic, not settled mechanism, and let
+expertise-reversal remind you the "rules" flip as learners advance.
+
 ## 10. Assessment validity & reliability (classical test construction)
 
 A test blueprint (content × cognitive-level matrix) precedes item writing. Items: one
@@ -123,6 +146,47 @@ limited.
 **In practice:** see `shared/ai_era_integrity.md` — the integrity audit in
 assessment-architect and Gate 3.5 both apply it. A syllabus without an AI-use policy
 fails the Quality Gate.
+
+## 13. Alternative grading systems (specifications, mastery/standards-based, ungrading)
+
+Points-and-percentages is one grading philosophy, not the only valid one. The suite
+treats the grading *scheme* as a professor choice and supports the major alternatives:
+
+- **Specifications (specs) grading** (Nilson, 2014): assignments are pass/redo against a
+  clear spec; the course grade is a bundle of satisfied specs. Reduces grading-time
+  haggling and ties grades to demonstrated competence.
+- **Mastery / standards-based grading**: grade by demonstrated proficiency on each
+  outcome, with reassessment, rather than averaging early failures into the final grade.
+  Aligns naturally with the Course Passport's outcome spine.
+- **Ungrading / contract grading** (Blum, 2020): de-emphasize marks, emphasize feedback
+  and self-assessment; the grade is set by a labor/engagement contract or a final
+  reflective conversation. Evidence is still emerging and it is not a fit for every
+  context (licensure, large enrollment) — offered as an informed option, not a mandate.
+
+**In practice:** `policies.grading_scheme` accepts any of these; assessment-architect's
+rubric and project modes can produce spec-style pass/redo criteria; the alignment gate
+checks outcome↔assessment coverage regardless of grading philosophy. The honest caveat:
+each has tradeoffs (reassessment workload, transcript-conversion, fairness at scale) —
+the suite helps implement the professor's choice, it does not claim one is best.
+
+## 14. Signature pedagogies — studio, clinical, performance (Shulman, 2005)
+
+Disciplines teach professional judgment through characteristic forms the lecture/exam
+model does not capture, and a "comprehensive" suite must not flatten them:
+
+- **Studio crit** (design, art, architecture): iterative making + public critique; the
+  "assessment" is the crit and the portfolio, judged on process and defensible choices.
+- **Clinical / practicum supervision** (medicine, nursing, education, social work):
+  supervised practice with graduated autonomy; assessment is observed competence against
+  professional standards, often via structured rubrics (e.g. OSCE-style stations).
+- **Performance assessment** (music, theatre, oral defense): juries, recitals, and
+  defenses judged on situated performance against criteria, not written proxies.
+
+**In practice:** these are first-class. assessment-architect's rubric mode supports
+performance/portfolio/observation rubrics; lesson-builder supports crit and lab formats;
+outcomes at the affective/psychomotor levels Bloom omits (§3) are legitimate. Where the
+suite's defaults assume a lecture/exam course, the professor's signature pedagogy
+overrides them — flag the mismatch, don't force the default.
 
 ---
 

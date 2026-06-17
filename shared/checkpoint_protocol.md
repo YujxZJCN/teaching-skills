@@ -39,6 +39,10 @@ defaults (a default the professor would plausibly have chosen differently) — c
 if there are more, that signals the agent decided too much without asking. Routine
 mechanical choices are not "decisions made for you" and do not belong here.
 
+Before presenting, run the **Output self-check** (`shared/output_self_check.md`) over the
+artifact and surface only failing lines in **Flags** — it makes "every artifact obeys the
+suite's rules" a pass the model actually runs, not a hope.
+
 Rules:
 
 - **Decisions made on the professor's behalf are surfaced, not buried.** The most
