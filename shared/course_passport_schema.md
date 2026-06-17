@@ -33,11 +33,23 @@ course:
   prerequisites: ["CS 101"]
   institution_constraints: []       # accreditation requirements, mandated topics, grade policies
 
+term_calendar:                      # the stored academic calendar — ask once, store here; never invent
+  start_date: null                  # ISO date of week 1; "what week is it?" computes from this
+  end_date: null
+  holidays: []                      # [{date|range, name}] — weeks with no class
+  exam_weeks: []                    # week ids that are exam/logistics weeks
+  add_drop_deadline: null           # ISO date (institutional fact; [NEEDS PROFESSOR INPUT] if unknown)
+  withdrawal_deadline: null
+
 learner_profile:                    # who the students actually are — drives every design choice
   prior_knowledge: ""
   motivation_context: ""            # required course vs elective; career goals
   known_difficulties: []            # common misconceptions, struggle points from past iterations
   accessibility_needs: "unknown"    # what accommodations are anticipated
+  cohort_evidence: null             # AGGREGATES ONLY from cohort-analyst — never individual rows.
+                                    # { instrument, date, n, response_rate, readiness: {concept: dist},
+                                    #   misconceptions: {name: prevalence}, source_note }
+                                    # Iron rule: no student-identifying data ever (see PII lint, check_passport.py P11)
 
 learning_outcomes:                  # the spine of constructive alignment
   - id: LO1
@@ -71,10 +83,13 @@ policies:
   integrity_policy: ""
   attendance_policy: ""
 
-workload_audit:                     # populated by the Alignment Gate
+workload_audit:                     # computed by course-designer schedule_planner at the schedule
+                                    # checkpoint; audited by the Alignment Gate (read-only — the gate
+                                    # never writes this field, it reads and judges it via check D1/D2)
   estimated_hours_per_week: null
   credit_hour_target: null
   status: not_audited               # not_audited | within_range | overloaded | underloaded
+  constants_used: ""                # the estimation constants, shown so the professor can adjust them
 
 gates:
   alignment_gate:                   # Gate 1.5 — see alignment_gate_protocol.md
@@ -93,10 +108,16 @@ artifacts:                          # ledger of everything the pipeline produced
     stage: 1
     confirmed_by_professor: true    # checkpoint record — nothing advances unconfirmed
 
-iteration_history:                  # cross-semester improvement loop (Stage 6)
+iteration_history:                  # cross-semester improvement loop (Stage 6).
+                                    # SINGLE WRITER: only iteration_coach (teaching-pipeline
+                                    # Stage 6) appends a consolidated entry. Other skills that
+                                    # produce evidence (eval-analysis, item-analysis, cohort,
+                                    # submission patterns) hand it to iteration_coach rather than
+                                    # writing here directly — keeps the ledger one-voiced.
   - term: "2025 Fall"
-    changes: []
+    changes: []                     # [{change, source_skill, evidence_ref}]
     evidence: ""                    # what evaluation/observation data motivated each change
+                                    # (AGGREGATE only — never individual student data)
 ```
 
 ## Iron rules

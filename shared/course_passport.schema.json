@@ -38,7 +38,24 @@
         "prior_knowledge": { "type": "string" },
         "motivation_context": { "type": "string" },
         "known_difficulties": { "type": "array", "items": { "type": "string" } },
-        "accessibility_needs": { "type": "string" }
+        "accessibility_needs": { "type": "string" },
+        "cohort_evidence": {
+          "type": ["object", "null"],
+          "description": "Aggregates only from cohort-analyst; no individual student data (enforced by check_passport.py P11).",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "term_calendar": {
+      "type": "object",
+      "properties": {
+        "start_date": { "type": ["string", "null"] },
+        "end_date": { "type": ["string", "null"] },
+        "holidays": { "type": "array" },
+        "exam_weeks": { "type": "array", "items": { "type": "string", "pattern": "^W\\d+$" } },
+        "add_drop_deadline": { "type": ["string", "null"] },
+        "withdrawal_deadline": { "type": ["string", "null"] }
       },
       "additionalProperties": true
     },
@@ -108,7 +125,8 @@
       "properties": {
         "estimated_hours_per_week": { "type": ["number", "null"] },
         "credit_hour_target": { "type": ["number", "null"] },
-        "status": { "enum": ["not_audited", "within_range", "overloaded", "underloaded"] }
+        "status": { "enum": ["not_audited", "within_range", "overloaded", "underloaded"] },
+        "constants_used": { "type": "string" }
       },
       "additionalProperties": true
     },

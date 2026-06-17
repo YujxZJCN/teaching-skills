@@ -21,6 +21,7 @@ Invariants:
   P8  every schedule[].assessments_due id exists in assessment_plan
   P9  assessment weights sum to 100 (tolerance 0.01)
   P10 gate findings' affected_ids reference existing ids (WARN-level)
+  P11 learner_profile carries no student-identifying data — email/ID/roster (PII guard)
 """
 
 import argparse
@@ -139,6 +140,52 @@ def crossref_findings(passport):
             if stray:
                 warn("P10", f"{gate_name} finding {fnd.get('check_id')} cites unknown ids", stray)
 
+    # P11 PII guard — the passport is about the course, never identifiable students.
+    # Heuristic structural enforcement of the suite-wide rule (no student data in the
+    # passport). Scans learner_profile + cohort_evidence for email addresses, ID-number
+    # patterns, and student-roster-shaped lists. BLOCK — a privacy violation, not advisory.
+    for finding in pii_findings(passport):
+        out.append(finding)
+
+    return out
+
+
+import re as _re
+
+_EMAIL = _re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+# student-id-like: 6+ digit run, or e.g. "ID: 12345", but not weeks/years/percentages
+_IDNUM = _re.compile(r"\b\d{6,}\b")
+_ROSTER_HINT = _re.compile(r"\b(student name|roster|grade|gpa|score)s?\b\s*[:=]", _re.I)
+
+
+def _walk_strings(obj, path="learner_profile"):
+    if isinstance(obj, str):
+        yield path, obj
+    elif isinstance(obj, dict):
+        for k, v in obj.items():
+            yield from _walk_strings(v, f"{path}.{k}")
+    elif isinstance(obj, list):
+        for i, v in enumerate(obj):
+            yield from _walk_strings(v, f"{path}[{i}]")
+
+
+def pii_findings(passport):
+    """P11: detect likely student-identifying data in learner_profile / cohort_evidence."""
+    out = []
+    lp = passport.get("learner_profile") or {}
+    for loc, s in _walk_strings(lp):
+        if _EMAIL.search(s):
+            out.append({"check_id": "P11", "severity": "BLOCK",
+                        "detail": f"{loc} contains an email address — student PII must never "
+                                  f"enter the passport (route to student-mentor)", "affected_ids": [loc]})
+        elif _IDNUM.search(s):
+            out.append({"check_id": "P11", "severity": "BLOCK",
+                        "detail": f"{loc} contains a long digit run resembling a student ID — "
+                                  f"the passport holds aggregates only", "affected_ids": [loc]})
+        elif _ROSTER_HINT.search(s):
+            out.append({"check_id": "P11", "severity": "WARN",
+                        "detail": f"{loc} looks roster/grade-shaped — verify it is an aggregate, "
+                                  f"not per-student data", "affected_ids": [loc]})
     return out
 
 

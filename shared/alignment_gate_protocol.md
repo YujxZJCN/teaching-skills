@@ -42,7 +42,7 @@ invoked standalone may offer it as `align-check` mode.
 
 | # | Check | Severity |
 |---|-------|----------|
-| D1 | Estimated weekly out-of-class hours computed and recorded in `workload_audit` | BLOCK (must be computed, not that it must be in range) |
+| D1 | `workload_audit.estimated_hours_per_week` is present (computed upstream by course-designer `schedule_planner` and persisted at the schedule checkpoint; the gate verifies presence, it does not compute it) | BLOCK (must be present, not that it must be in range) |
 | D2 | Estimate within ±25% of the credit-hour convention (≈2 out-of-class hours per contact hour, adjusted for institution norms in `institution_constraints`) | WARN |
 | D3 | No week with two major deliverables due simultaneously without professor sign-off | WARN |
 
@@ -50,7 +50,9 @@ invoked standalone may offer it as `align-check` mode.
 estimator approach): reading ≈ 67–500 words/min depending on density and purpose;
 problem sets ≈ professor's estimate × 3 for novices; writing ≈ 0.5–5 hrs/page by genre.
 When in doubt, present the calculation and let the professor adjust the constants —
-record the constants used in `workload_audit`.
+`schedule_planner` records the constants used in `workload_audit.constants_used` (the
+gate only reads them). Canonical constants live in `shared/workload_constants.md` so the
+script, the protocol, and the blueprint template share one source.
 
 ## Gate behavior
 

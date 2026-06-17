@@ -18,6 +18,15 @@ course:
   institution_constraints:
     - "English-medium instruction (EMI) at a Chinese university — all materials and assessments in English"
 
+term_calendar:
+  start_date: "2026-09-07"
+  end_date: "2026-12-25"
+  holidays:
+    - { date: "2026-10-01..2026-10-07", name: "National Day holiday (no class)" }
+  exam_weeks: [W8, W16]
+  add_drop_deadline: "[NEEDS PROFESSOR INPUT: registrar add/drop deadline]"
+  withdrawal_deadline: "[NEEDS PROFESSOR INPUT: registrar withdrawal deadline]"
+
 learner_profile:
   prior_knowledge: >-
     Strong programmers (CS 201; most fluent in Python). Linear algebra (MATH 210)

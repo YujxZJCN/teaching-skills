@@ -33,12 +33,21 @@ design stage 3. The schedule is a learning arc, not a topic list with dates.
    the workload estimate (D1, constants per `shared/alignment_gate_protocol.md`) and
    present it.
 6. **Checkpoint**: schedule table + workload estimate + flags. Then write to passport
-   `schedule[]` and back-fill `learning_outcomes[].taught_in`.
+   `schedule[]`, back-fill `learning_outcomes[].taught_in`, **and persist
+   `workload_audit`** (`estimated_hours_per_week`, `credit_hour_target`, `status`,
+   `constants_used`) from the estimate the professor confirmed in step 5. This write is
+   required: the Alignment Gate's check D1 reads `workload_audit.estimated_hours_per_week`
+   and BLOCKs if it is null — the gate is read-only and cannot compute it, so if you
+   don't persist it the pipeline deadlocks at Gate 1.5.
+7. **Term calendar**: when you ask for the academic calendar (rule below), store the
+   answer in passport `term_calendar` (start/end dates, holidays, exam weeks). Downstream
+   skills compute "what week is it?" from this field; never re-ask.
 
 ## Rules
 
 - Never compress the professor's topic list to fit by silently dropping topics —
   present the overflow explicitly: "these don't fit; cut, compress, or move to
   self-study?"
-- Holidays/breaks: ask for the actual academic calendar; never invent dates.
+- Holidays/breaks: ask for the actual academic calendar; never invent dates. Store the
+  confirmed calendar in `term_calendar` (see step 7).
 - `activities` and `artifact_refs` stay empty — `lesson-builder` fills them in Stage 2.

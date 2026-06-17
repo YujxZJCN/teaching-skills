@@ -125,6 +125,26 @@ def test_p1_duplicate_id_fires(passport):
     assert "P1" in ids
 
 
+def test_p11_email_in_learner_profile_blocks(passport):
+    p = copy.deepcopy(passport)
+    p["learner_profile"]["prior_knowledge"] += " Contact li.wei@university.edu for details."
+    ids, findings = passport_checks(p)
+    assert "P11" in ids
+    assert any(f["severity"] == "BLOCK" for f in findings if f["check_id"] == "P11")
+
+
+def test_p11_student_id_in_cohort_evidence_blocks(passport):
+    p = copy.deepcopy(passport)
+    p["learner_profile"]["cohort_evidence"] = {"note": "student 20260417 scored lowest"}
+    ids, _ = passport_checks(p)
+    assert "P11" in ids
+
+
+def test_golden_passport_has_term_calendar(passport):
+    # the showcase fixture now exercises the new schema fields
+    assert "term_calendar" in passport and passport["term_calendar"].get("start_date")
+
+
 # --- alignment gate mutations -------------------------------------------------
 
 def test_a1_unassessed_outcome_blocks(passport):
