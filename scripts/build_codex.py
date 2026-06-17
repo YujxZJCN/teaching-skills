@@ -246,8 +246,8 @@ def emit_manifest(skills, commit, date):
             "url": "https://github.com/YujxZJCN/teaching-skills.git",
             "commit": commit,
             "included_paths": [s.name for s in skills] + [
-                "shared", "scripts (validators + dashboard)", "commands",
-                "MODE_REGISTRY.md", "docs/ARCHITECTURE.md"],
+                "shared", "scripts (validators + dashboard + render/LMS)", "commands",
+                "MODE_REGISTRY.md"],
         }],
         "excluded_patterns": [
             ".git", ".github", ".claude-plugin", "skills/ symlinks",
@@ -504,15 +504,13 @@ def build(out_dir, date=None):
     for s in skills:
         copy_skill(s, ts / s.name, skill_names)
 
-    # shared/, commands/, MODE_REGISTRY, ARCHITECTURE (path refs rewritten)
+    # shared/, commands/, MODE_REGISTRY (path refs rewritten). docs/ARCHITECTURE.md is
+    # repo-maintainer documentation (and references dev-only build scripts), not runtime
+    # skill content — the Codex package has its own README, so it is intentionally not vendored.
     copy_tree_rewritten(ROOT / "shared", ts / "shared", skill_names)
     copy_tree_rewritten(ROOT / "commands", ts / "commands", skill_names)
     (ts / "MODE_REGISTRY.md").write_text(
         rewrite_refs((ROOT / "MODE_REGISTRY.md").read_text(encoding="utf-8"), None, skill_names),
-        encoding="utf-8")
-    (ts / "docs").mkdir(exist_ok=True)
-    (ts / "docs" / "ARCHITECTURE.md").write_text(
-        rewrite_refs((ROOT / "docs" / "ARCHITECTURE.md").read_text(encoding="utf-8"), None, skill_names),
         encoding="utf-8")
 
     # tool-agnostic scripts only

@@ -1,4 +1,4 @@
-# Teaching Skills Architecture (v1.1.2)
+# Teaching Skills Architecture (v1.2.0)
 
 Full pipeline view: flow, stage matrix, passport data flow, skill dependency graph, and
 gate inventory. Per-mode reference: `MODE_REGISTRY.md`. Per-skill detail: each skill's
@@ -58,14 +58,16 @@ checklist, then professor acknowledgment. Gates are non-skippable in pipeline mo
 ## 4. Passport data flow
 
 ```
-professor input ──→ Stage 0 writes course/, learner_profile/
-course-designer ──→ learning_outcomes[], assessment_plan[], schedule[], policies
+professor input ──→ Stage 0 writes course/, learner_profile/, term_calendar/
+course-designer ──→ learning_outcomes[], assessment_plan[], schedule[], policies;
+                    schedule_planner persists workload_audit (gate D1 reads it, never writes)
 gate_runner     ──→ gates.* (only writer of gate fields; read-only otherwise)
 lesson-builder  ──→ schedule[].activities, schedule[].artifact_refs
 assessment-architect → assessment_plan[].artifact_ref, .ai_resilience
+cohort-analyst  ──→ learner_profile.cohort_evidence (AGGREGATES ONLY; P11 guard enforces)
 submission-auditor  → iteration_history[].evidence (anonymous counts only)
 teaching-reflector  → iteration_history[].evidence
-iteration_coach ──→ iteration_history[] (consolidated record)
+iteration_coach ──→ iteration_history[] (SINGLE writer — others hand evidence to it)
 ALL skills      ──→ artifacts[] ledger entries (confirmed_by_professor at checkpoints)
 
 NEVER in the passport: data about identifiable students (hard rule —
@@ -132,18 +134,23 @@ Shared gate mechanics: findings cite passport ids; BLOCK → return to producing
 (max 3 rounds, then reframed as a professor decision); WARN dismissible with logged
 reason, never re-raised; professor acknowledgment closes the gate.
 
-## 6b. Machine-checkable layer (v1.1.0)
+## 6b. Machine-checkable layer (v1.1.0; extended v1.2.0)
 
 The deterministic core of the contracts is executable, not just documented:
 
 | Component | Checks | Runs |
 |-----------|--------|------|
-| `shared/course_passport.schema.json` | passport structure: required fields, enums, id patterns | via check_passport.py |
-| `scripts/check_passport.py` | P1–P10 cross-reference invariants: id uniqueness, `assessed_by`↔`outcomes_assessed` and `taught_in`↔`schedule.outcomes` mirrors, referential integrity, weights sum to 100 | passport_keeper on every load; CI |
-| `scripts/check_alignment_gate.py` | Gate 1.5 checks A1–D3 executed verbatim; honors dismissed findings; PASS / PASS-WITH-WARNINGS / FAIL verdicts | gate_runner at Gate 1.5; `align-check` mode; CI |
-| `scripts/check_registry_consistency.py` | the three-places rule: SKILL.md modes ↔ MODE_REGISTRY ↔ filesystem agent counts ↔ totals line | CI |
-| `scripts/build_dashboard.py` | renders the passport into a single-file HTML course dashboard (gates with live re-check, outcomes, assessments, weekly resources with local artifact links, ledger); deterministic build product, regenerated at any checkpoint | teaching-pipeline `dashboard` mode; CI-tested |
-| `tests/` | golden fixture (the showcase passport) must pass clean; mutation tests assert each check fires on targeted breakage | CI (`.github/workflows/ci.yml`) |
+| `shared/course_passport.schema.json` | passport structure: required fields, enums, id patterns, `term_calendar`, `cohort_evidence` | via check_passport.py |
+| `scripts/check_passport.py` | P1–P10 cross-reference invariants (id mirrors, referential integrity, weights=100) + **P11 PII guard** (no email/student-ID/roster data in `learner_profile`/`cohort_evidence`) | passport_keeper on every load; CI |
+| `scripts/check_alignment_gate.py` | Gate 1.5 checks A1–D3 executed verbatim; honors dismissed findings; PASS / PASS-WITH-WARNINGS / FAIL | gate_runner at Gate 1.5; `align-check`; CI |
+| `scripts/check_quality_gate.py` | **Gate 3.5 executable core** (Q1/Q2/T1/T2/T4/W1); judgment-heavy checks marked NOT_EVALUABLE for the agent | gate_runner at Gate 3.5; CI |
+| `scripts/check_content_markers.py` | unresolved `[NEEDS PROFESSOR INPUT]`/`[VERIFY]` in produced artifacts; `--strict` blocks finalization (Gate T4 / Stage 5) | gate_runner; CI |
+| `scripts/check_registry_consistency.py` | three-places rule (SKILL.md ↔ MODE_REGISTRY ↔ filesystem) **+ R6–R9: plugin/marketplace versions agree, description counts match, ARCHITECTURE version matches** | CI |
+| `scripts/check_links.py` | every backtick source reference in the repo resolves (parity with the Codex package's link guard) | CI |
+| `scripts/build_dashboard.py` | renders the passport into a single-file HTML course dashboard; deterministic build product | `dashboard` mode; CI-tested |
+| `scripts/render_document.py` · `scripts/export_lms.py` | Markdown → DOCX/PDF (Pandoc, graceful degradation); question-set JSON → GIFT / QTI 2.1 / Common Cartridge (LMS-importable) | on demand; CI-tested |
+| `scripts/build_codex.py` | generates the Codex sibling distribution; vendors the tool-agnostic scripts; SKILL.md→WORKFLOW.md | release; CI-tested |
+| `tests/` | two golden showcase passports must pass clean; mutation tests assert each check fires on targeted breakage; LMS-export XML/zip validity | CI (`.github/workflows/ci.yml`) |
 
 Agents run the scripts when Python 3 is available and degrade to manual checklist
 evaluation (stated as lower assurance) when it isn't — the same graceful-degradation
