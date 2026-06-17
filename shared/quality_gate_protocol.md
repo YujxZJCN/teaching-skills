@@ -26,6 +26,7 @@ acknowledgment. **Not skippable** inside the pipeline.
 | T1 | Every project/paper brief has Purpose / Task / Criteria sections | BLOCK |
 | T2 | Every assessment ≥10% weight has a rubric or explicit grading scheme artifact | WARN |
 | T3 | Syllabus states grading scheme, late policy, and how to get help | WARN |
+| T4 | No artifact bound for students carries an unresolved `[NEEDS PROFESSOR INPUT]` or `[VERIFY]` marker — run `scripts/check_content_markers.py <passport> --strict`. Drafts may carry markers; student-facing finalization may not | WARN (BLOCK at Stage 5 finalize) |
 
 ### U. Accessibility & UDL (Pedagogy Foundations §7)
 

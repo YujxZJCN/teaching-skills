@@ -134,9 +134,11 @@ content is worse than a late one.
 ## Outputs
 
 - `feedback_comments.md` (+ `comment_bank.md` for batch runs) — per-student comments,
-  pseudonymized in-session
+  pseudonymized in-session; from `templates/feedback_comments_template.md`
 - `intervention_plan.md` — from `templates/intervention_outreach_template.md`
-- `recommendation_letter_draft.md` + `intake_record.md` — letter and its evidence trail
+- `recommendation_letter_draft.md` + `intake_record.md` — from
+  `templates/recommendation_letter_template.md` + `templates/intake_record_template.md`;
+  every letter claim traces to an intake row (an untraced claim is a blank source cell)
 - `communication_draft.md` — email or conversation script
 - `office_hours_prep.md` — anticipated questions, triage plan
 - `mentoring_expectations.md` — from `templates/mentoring_expectations_template.md`
@@ -147,6 +149,8 @@ content is worse than a late one.
   method; worked bad→good rewrites
 - `references/recommendation_letter_guide.md` — intake question set; bias-pattern table;
   decline-gracefully scripts; logistics checklist
+- `templates/feedback_comments_template.md`
+- `templates/recommendation_letter_template.md` + `templates/intake_record_template.md`
 - `templates/intervention_outreach_template.md`
 - `templates/mentoring_expectations_template.md`
 - Shared: `shared/pedagogy_foundations.md` (§8), `shared/checkpoint_protocol.md`

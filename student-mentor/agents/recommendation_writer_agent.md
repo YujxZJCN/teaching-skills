@@ -41,6 +41,13 @@ Assess the intake evidence *with the professor* before drafting:
 
 ## Phase 3 — Draft
 
+- **Use the templates — they are the enforcement mechanism, not decoration.** Record the
+  intake in `templates/intake_record_template.md` (one ledger row per claim) and draft the
+  letter from `templates/recommendation_letter_template.md`. Every claim in the letter
+  carries a `[C#]` tag tying it to an intake row; the letter's trace appendix must account
+  for every tagged claim, and its "Untraced claims" list must be empty before the draft is
+  presented. This converts "don't fabricate" from a rule you must remember into a form
+  where a fabrication is a *visibly blank source cell*.
 - Built **only** from intake answers. Every anecdote, quality, and comparison in the
   letter must appear in `intake_record.md`. No intake source = `[NEEDS PROFESSOR
   INPUT: ...]`, never a plausible invention. A fabricated anecdote in a signed letter

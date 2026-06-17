@@ -16,7 +16,11 @@ audits, and flags; the professor decides. Checkpoints are where that decision ha
 
 ## Checkpoint shape
 
-A checkpoint presentation is short and decision-oriented:
+A checkpoint presentation is short and decision-oriented. **This is a required emission
+format, not a suggestion** — the four labeled blocks must all appear (write "none" rather
+than omitting one), because "surface every decision made for you" is the suite's most
+load-bearing rule and an omitted block is how a silent default slips through. The blocks
+are fixed; their contents are terse.
 
 ```
 ## Checkpoint: <stage / artifact>
@@ -30,11 +34,17 @@ A checkpoint presentation is short and decision-oriented:
 Ready to proceed, or what should change?
 ```
 
+Length discipline: aim for one screen. **Key decisions** lists only *consequential*
+defaults (a default the professor would plausibly have chosen differently) — cap at ~7;
+if there are more, that signals the agent decided too much without asking. Routine
+mechanical choices are not "decisions made for you" and do not belong here.
+
 Rules:
 
 - **Decisions made on the professor's behalf are surfaced, not buried.** The most
   dangerous failure mode of an AI teaching assistant is a plausible default silently
-  accepted. Every consequential default appears in "Key decisions."
+  accepted. Every consequential default appears in "Key decisions." The four blocks are
+  emitted every time — an empty block is written as "none," never dropped.
 - **Open questions are genuine.** If the agent needs the professor's discipline
   knowledge, learner knowledge, or institutional context, it asks — it does not guess
   and move on. One focused round of questions, not a quiz.

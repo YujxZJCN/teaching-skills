@@ -63,6 +63,9 @@ For a stack of submissions:
   `[NEEDS PROFESSOR INPUT: your read on the methodology section]`.
 - Suggest pseudonyms/initials for the session; output uses them until the professor
   exports.
-- Every comment set ends with the verify-before-release reminder (non-removable).
+- **Draft from `templates/feedback_comments_template.md`** — its structure carries the
+  evidence-quoting requirement (every comment locates the thing in the student's work) and
+  ends with the non-removable verify-before-release block, so the guard ships *inside* the
+  artifact rather than depending on the model remembering it.
 - Output `feedback_comments.md` (+ `comment_bank.md` in batch runs); present at a
   🧑 checkpoint with tone-shift and fairness flags listed first.
