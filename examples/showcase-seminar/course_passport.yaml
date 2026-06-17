@@ -1,0 +1,337 @@
+# Course Passport — HIST 247 The Atlantic World, 1500–1800 (SHOWCASE — SEMINAR)
+# Demonstration artifact: hypothetical course, synthetic data, no real students.
+# Schema: shared/course_passport_schema.md (passport_version 1.0)
+# Companion to examples/showcase/ (a 90-person STEM course). This one is a small
+# humanities seminar, chosen to exercise the discussion/writing-based design path and
+# the person-affecting skills. NO student-identifying data appears anywhere here —
+# the recommendation letter, intake record, and feedback report are standalone files,
+# deliberately NOT listed in artifacts[] (they carry student content).
+
+passport_version: "1.0"
+course:
+  code: "HIST 247"
+  title: "The Atlantic World, 1500–1800"
+  discipline: "History"
+  level: "undergraduate-seminar"
+  credits: 3
+  modality: "in-person"
+  class_size: 18
+  contact_hours_per_week: 2.5         # one 150-minute weekly seminar
+  weeks: 15
+  language_of_instruction: "English"
+  prerequisites: ["one prior history course"]
+  institution_constraints:
+    - "Discussion- and writing-intensive seminar; enrollment capped at 18 by department policy"
+
+term_calendar:
+  start_date: "2026-09-08"
+  end_date: "2026-12-15"
+  holidays:
+    - { date: "2026-11-26", name: "Thanksgiving recess (no seminar)" }
+  exam_weeks: [W15]                    # no sit-down exam; W15 is the synthesis/submission week
+  add_drop_deadline: "[NEEDS PROFESSOR INPUT: registrar add/drop deadline]"
+  withdrawal_deadline: "[NEEDS PROFESSOR INPUT: registrar withdrawal deadline]"
+
+learner_profile:
+  prior_knowledge: >-
+    History and area-studies majors who have completed at least one prior history
+    course. Strong readers with solid general historical literacy. Primary-source
+    analysis experience is mixed — some have done a methods course, others have only
+    read sources as illustration rather than as evidence to be interrogated.
+  motivation_context: >-
+    A topical seminar that most students elect toward the major; many intend graduate
+    study or careers in archives, museums, law, and teaching (professor's report — not
+    surveyed).
+  known_difficulties:
+    - "Presentism — judging past actors and institutions by present-day values rather than reconstructing their context"
+    - "Confusing summary with argument — restating what a source says instead of advancing a claim about it"
+    - "Weak source contextualization — reading a document without establishing its provenance, audience, and purpose"
+  accessibility_needs: "unknown"
+  cohort_evidence: null               # no diagnostic run for this showcase; aggregates only when present
+
+learning_outcomes:
+  - id: LO1
+    statement: "Explain the principal systems, actors, and chronology of the Atlantic world, 1500–1800 — empires, the slave trade and slavery, commodity and migration flows, and exchanges among European, African, and Indigenous American societies"
+    bloom_level: understand
+    assessed_by: [A2, A5]
+    taught_in: [W1, W2, W3, W4, W5, W7, W9]
+  - id: LO2
+    statement: "Apply primary-source analysis methods — establishing provenance, audience, purpose, and genre — to interpret an individual document as historical evidence"
+    bloom_level: apply
+    assessed_by: [A3]
+    taught_in: [W2, W3, W6]
+  - id: LO3
+    statement: "Analyze a historiographical argument: distinguish an author's claim, evidence, and warrant from mere summary, and locate the argument within a scholarly debate"
+    bloom_level: analyze
+    assessed_by: [A1, A2, A4]
+    taught_in: [W2, W4, W5, W9, W10, W11]
+  - id: LO4
+    statement: "Evaluate competing historical interpretations on their evidentiary and contextual merits, resisting presentism and weighing the limits of the available sources"
+    bloom_level: evaluate
+    assessed_by: [A1, A3, A4, A5]
+    taught_in: [W3, W5, W7, W10, W13, W14]
+  - id: LO5
+    statement: "Create an original, archivally grounded research essay that poses a historical question, builds an argument from primary sources, and situates it in the secondary literature"
+    bloom_level: create
+    assessed_by: [A4]
+    taught_in: [W7, W8, W12, W14]
+
+assessment_plan:
+  - id: A1                            # Tier P — in-class, unaided, live
+    type: participation
+    title: "Seminar participation & discussion leadership"
+    weight: 15
+    outcomes_assessed: [LO3, LO4]
+    week: "W2-W14 (ongoing; each student co-leads one seminar)"
+    ai_resilience: reviewed           # in-person discussion — not AI-vulnerable by construction
+    artifact_ref: null
+  - id: A2                            # Tier D — short writing, tools-with-disclosure, spec-graded
+    type: homework
+    title: "Reading responses (6 assigned, best 5 counted)"
+    weight: 15
+    outcomes_assessed: [LO1, LO3]
+    week: "W2 / W3 / W5 / W7 / W9 / W11 (best 5 of 6)"
+    ai_resilience: reviewed           # specs-flavored pass/revise; low individual stakes, disclosure required
+    artifact_ref: null
+  - id: A3                            # Tier D — single-document analysis with disclosure
+    type: paper
+    title: "Primary-source analysis paper (1 document, ~1500 words)"
+    weight: 20
+    outcomes_assessed: [LO2, LO4]
+    week: W6
+    ai_resilience: reviewed
+    artifact_ref: null
+  - id: A4                            # Tier D — staged process-evidence design
+    type: project
+    title: "Research essay (staged: proposal W8 7% · draft W12 8% · final W15 20%)"
+    weight: 35
+    outcomes_assessed: [LO3, LO4, LO5]
+    week: "W8 / W12 / W15 (milestones)"
+    ai_resilience: redesigned         # was a single end-of-term essay; redesigned to staged milestones
+                                      # (proposal + reviewed draft + final) with a revision memo at each
+                                      # stage so the process is the evidence — see research_essay_brief.md
+    artifact_ref: "research_essay_brief.md"
+  - id: A5                            # Tier O — AI-collaboration-aware take-home synthesis
+    type: paper
+    title: "Take-home synthesis essay (final, AI-collaboration-aware)"
+    weight: 15
+    outcomes_assessed: [LO1, LO4]
+    week: W15
+    ai_resilience: reviewed           # Tier O by design — graded on judgment over and beyond tool output
+    artifact_ref: null
+# Weights: 15 + 15 + 20 + 35 + 15 = 100
+
+schedule:
+  - id: W1
+    topic: "What was 'the Atlantic world'? Frameworks, geographies, and the problem of presentism"
+    outcomes: [LO1]
+    activities: []
+    assessments_due: []
+    artifact_refs: []
+  - id: W2
+    topic: "Pre-contact Atlantic societies: West African states, Indigenous American polities, Iberian expansion"
+    outcomes: [LO1, LO2, LO3]
+    activities: []
+    assessments_due: [A2]             # Reading response 1
+    artifact_refs: []
+  - id: W3
+    topic: "Encounter and conquest: sources, silences, and reading colonial documents critically"
+    outcomes: [LO1, LO2, LO4]
+    activities: []
+    assessments_due: [A2]             # Reading response 2
+    artifact_refs: []
+  - id: W4
+    topic: "The Columbian Exchange and the making of Atlantic economies"
+    outcomes: [LO1, LO3]
+    activities: []
+    assessments_due: []
+    artifact_refs: []
+  - id: W5
+    topic: "The Atlantic slave trade: scale, sources, and historiographical debate"
+    outcomes: [LO1, LO3, LO4]
+    activities: []
+    assessments_due: [A2]             # Reading response 3
+    artifact_refs: []
+  - id: W6
+    topic: "Slavery and resistance in the plantation Americas (primary-source analysis workshop)"
+    outcomes: [LO2]
+    activities: []
+    assessments_due: [A3]             # Primary-source analysis paper
+    artifact_refs: []
+  - id: W7
+    topic: "Atlantic migrations, free and unfree; framing a researchable question (research-essay launch)"
+    outcomes: [LO1, LO4, LO5]
+    activities: []
+    assessments_due: [A2]             # Reading response 4
+    artifact_refs: ["research_essay_brief.md"]
+  - id: W8
+    topic: "Religion and cultural exchange across the Atlantic; from question to proposal"
+    outcomes: [LO5]
+    activities: []
+    assessments_due: [A4]             # A4 Milestone 1 (proposal)
+    artifact_refs: ["research_essay_brief.md"]
+  - id: W9
+    topic: "Empires and warfare: the Atlantic in the eighteenth century"
+    outcomes: [LO1, LO3]
+    activities: []
+    assessments_due: [A2]             # Reading response 5
+    artifact_refs: []
+  - id: W10
+    topic: "Atlantic revolutions I: the American and French revolutions in Atlantic perspective"
+    outcomes: [LO3, LO4]
+    activities: []
+    assessments_due: []
+    artifact_refs: []
+  - id: W11
+    topic: "Atlantic revolutions II: the Haitian Revolution and the historiography of slavery's end"
+    outcomes: [LO3]
+    activities: []
+    assessments_due: [A2]             # Reading response 6 (sixth of six; best 5 counted)
+    artifact_refs: []
+  - id: W12
+    topic: "Abolition and its limits; workshopping the research-essay draft"
+    outcomes: [LO5]
+    activities: []
+    assessments_due: [A4]             # A4 Milestone 2 (reviewed draft)
+    artifact_refs: ["research_essay_brief.md"]
+  - id: W13
+    topic: "Memory and legacy: how the Atlantic past is contested today (presentism, revisited)"
+    outcomes: [LO4]
+    activities: []
+    assessments_due: []
+    artifact_refs: []
+  - id: W14
+    topic: "Synthesis seminar: what holds the Atlantic world together as a field?"
+    outcomes: [LO4, LO5]
+    activities: []
+    assessments_due: []
+    artifact_refs: []
+  - id: W15
+    tag: logistics                    # submission week — no new content; final research essay + take-home synthesis
+    topic: "Final submissions: research essay due; take-home synthesis essay"
+    outcomes: []
+    activities: []
+    assessments_due: [A4, A5]         # A4 Milestone 3 (final) + A5 take-home synthesis
+    artifact_refs: ["research_essay_brief.md"]
+
+policies:
+  grading_scheme: >-
+    Final grade = weighted sum per the assessment plan. Reading responses (A2) use a
+    lightly specs-flavored scheme: each response is marked pass / revise against a posted
+    spec (a defensible claim, at least one source read as evidence not illustration, and
+    contextualization of that source); a "revise" may be resubmitted once within one week
+    and, if it then meets the spec, counts as a pass. The best 5 of 6 passes count. All
+    other assessments are graded on their rubrics. No curve. Letter cutoffs: A >= 93,
+    A- 90-92, B+ 87-89, B 83-86, B- 80-82, C+ 77-79, C 70-76, D 60-69, F < 60.
+  late_policy: >-
+    Research-essay milestones (A4) and the primary-source paper (A3): 3 free late days
+    pooled across the term (max 2 on one artifact); afterwards -1/3 letter grade per day,
+    up to 3 days, then not accepted. Reading responses (A2): no make-ups — best-5-of-6
+    absorbs absences, and the revise option absorbs a weak attempt. The take-home
+    synthesis (A5) has a fixed submission window and is not eligible for late days.
+  ai_use_policy: >-
+    Per-assessment tiers (shared/ai_era_integrity.md). Tier P: A1 seminar participation
+    and discussion leadership — live, in-person, unaided by construction. Tier D: A2
+    reading responses, A3 primary-source paper, A4 research essay — generative AI permitted
+    as a tool with a short disclosure (which tool, what you asked, what you changed);
+    disclosure is never penalized, non-disclosure where required is an integrity matter.
+    Tier O: A5 take-home synthesis essay — AI collaboration is expected; you are graded on
+    judgment over the tool's output (verification, selection, and what you add beyond it),
+    with a required process note. Full table with rationales in syllabus.md.
+  integrity_policy: "[NEEDS PROFESSOR INPUT: institutional academic integrity policy link — faculty handbook §academic-conduct]"
+  attendance_policy: >-
+    A discussion seminar depends on presence: regular attendance and prepared
+    participation are expected, and discussion leadership (A1) requires it. More than two
+    unexcused absences should be discussed with the instructor. Participation is assessed
+    on the quality of engagement with the readings and peers, never on volume of talk or
+    on agreement with the instructor.
+
+workload_audit:
+  estimated_hours_per_week: 6.3
+  credit_hour_target: 5.0             # 2 out-of-class hours per contact hour × 2.5 contact hours
+  status: within_range
+  constants_used: >-
+    Reading ~70 pp/wk of mixed primary + secondary sources × ~400 words/p ÷ 130 wpm
+    (read-to-discuss, annotating) ≈ 3.6 h; reading responses 6 × ~2.5 h ÷ 15 wk ≈ 1.0 h;
+    primary-source paper ~9 h ÷ 15 wk ≈ 0.6 h; research essay ~16 h team-of-one estimate
+    (proposal + draft + final + revision memos) ÷ 15 wk ≈ 1.1 h. Take-home synthesis
+    treated as redistributed end-of-term study time, not added. Full arithmetic in
+    alignment_report.md (check D1/D2). Estimate 6.3 vs target 5.0 is +26% — just over the
+    ±25% band; recorded as a deliberate, professor-acknowledged design choice (see gate
+    finding D2), not a defect, given a reading-intensive upper-level seminar.
+
+gates:
+  alignment_gate:
+    status: pass
+    last_run: "2026-06-15"
+    findings:
+      - check_id: C3
+        severity: WARN
+        detail: >-
+          No assessment carries a low-stakes weight (<= 10%); the first high-stakes
+          assessment (A3 primary-source paper, 20%, due W6) is not preceded by a formally
+          low-stakes one. Affected: none cited (course-level structural note).
+        affected_ids: []
+        dismissed: >-
+          deliberate — the reading responses (A2, 15%) are the calibration instrument: low
+          individual stakes (best 5 of 6, ~3% each), specs-graded pass/revise with a free
+          resubmission, and they begin W2, four weeks before the first paper. They do the
+          job a sub-10% assessment would, so the threshold flag does not apply here.
+      - check_id: D2
+        severity: WARN
+        detail: >-
+          Estimated out-of-class workload 6.3 h/wk vs credit-hour target 5.0 h/wk is +26%,
+          just outside the ±25% tolerance — driven by ~70 pp/wk of seminar reading.
+        affected_ids: []
+        dismissed: >-
+          acknowledged — a reading-intensive upper-level seminar runs deliberately above
+          the generic credit-hour convention; the professor accepts the reading load as
+          core to the course and will signal it plainly in the syllabus. Recorded, not
+          re-raised.
+      - check_id: D3
+        severity: WARN
+        detail: >-
+          W15 lists two major deliverables: A4 (research essay final, 20%) and A5
+          (take-home synthesis essay, 15%). Affected: A4, A5, W15.
+        affected_ids: [A4, A5, W15]
+        note: >-
+          left live and recorded (not dismissed). The professor confirmed the staging is
+          intentional: the research essay is due at the start of the final week, while the
+          synthesis is a take-home released that week with a submission window into the
+          exam period, so the two do not in practice land on one day. Kept visible so the
+          delivery sequencing is checked at publication.
+  quality_gate:
+    status: pass
+    last_run: "2026-06-15"
+    findings: []
+
+artifacts:
+  # COURSE-LEVEL artifacts only. The person-affecting files (recommendation_letter_draft.md,
+  # intake_record.md, feedback_report.md) are intentionally absent: they contain student
+  # content and never enter the passport ledger (suite-wide no-student-data rule).
+  - path: "syllabus.md"
+    type: syllabus
+    produced_by: "course-designer (syllabus-only)"
+    stage: 1
+    confirmed_by_professor: true
+  - path: "alignment_report.md"
+    type: gate_report
+    produced_by: "alignment_auditor_agent (course-designer align-check)"
+    stage: 1.5
+    confirmed_by_professor: true
+  - path: "research_essay_brief.md"
+    type: project_brief
+    produced_by: "assessment-architect (project brief — TILT)"
+    stage: 3
+    confirmed_by_professor: true
+
+iteration_history:
+  - term: "2025 Fall"
+    changes:
+      - "Replaced the single end-of-term research essay (one W15 deadline) with staged milestones — proposal W8, reviewed draft W12, final W15 — each carrying a short revision memo, and split the weight (7% / 8% / 20%) so the process is the graded evidence (now A4)"
+      - "Introduced the specs-flavored pass/revise scheme for reading responses (A2) with a one-time resubmission, to move students off summary and toward argument earlier"
+    evidence: >-
+      teaching-reflector eval-analysis recurring theme that the research essay "came down
+      to the last two weeks" (9 of 31 comments); under the single-deadline design a large
+      share of essays showed no evidence of revision. Aggregate themes only — no individual
+      student data.

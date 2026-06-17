@@ -90,13 +90,20 @@ Two ideas hold this together:
 
 ## Showcase: what the output looks like
 
-**[Browse the worked example →](examples/showcase/)** — a complete artifact set for a
-demonstration course (CS 304 Introduction to Machine Learning, 90 students): filled
-Course Passport, syllabus, alignment gate report with a dismissed-warning trail, a
-lesson plan + activity sheet, an exam blueprint with sample items and a worked key,
-and the AI-integrity audit that redesigned the course project. Synthetic and clearly
-labeled as such — but every file obeys the suite's own rules, so you can judge the
-output quality before installing.
+Two complete, synthetic-but-rule-obeying artifact sets — so you can judge output quality
+before installing:
+
+- **[STEM lecture course →](examples/showcase/)** — CS 304 Introduction to Machine
+  Learning, 90 students: filled Course Passport, syllabus, alignment gate report with a
+  dismissed-warning trail, lesson plan + activity sheet, exam blueprint with sample items
+  and a worked key, the AI-integrity audit that redesigned the course project, and a
+  rendered HTML course dashboard.
+- **[Humanities seminar →](examples/showcase-seminar/)** — HIST 247 The Atlantic World,
+  18 students: a discussion/writing course with specs-flavored grading, **plus inspectable
+  person-affecting outputs** — a recommendation letter with its claim-to-intake trace
+  appendix, the intake ledger behind it, and a feedback report — demonstrating the
+  anti-fabrication templates (every claim traces to evidence; no student data in the
+  passport).
 
 ## Quick start
 
