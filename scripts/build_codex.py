@@ -488,7 +488,12 @@ def build(out_dir, date=None):
 
     out = Path(out_dir)
     if out.exists():
-        shutil.rmtree(out)
+        # clear previous output but PRESERVE a .git dir if the output is a checked-out
+        # repo (so regenerating in place never destroys version history)
+        for child in out.iterdir():
+            if child.name == ".git":
+                continue
+            shutil.rmtree(child) if child.is_dir() else child.unlink()
     suite = out / "skills" / SUITE_NAME
     ts = suite / "ts"
     (suite / "agents").mkdir(parents=True, exist_ok=True)
