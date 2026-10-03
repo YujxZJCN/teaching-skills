@@ -34,7 +34,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # Independent Codex-package version (tracks the adapter, not the suite).
-CODEX_VERSION = "0.2.0"
+CODEX_VERSION = "0.2.1"
 SUITE_NAME = "teaching-suite"
 
 # Directories that are NOT skills (no SKILL.md, or infrastructure).
@@ -247,7 +247,7 @@ def emit_manifest(skills, commit, date):
             "commit": commit,
             "included_paths": [s.name for s in skills] + [
                 "shared", "scripts (validators + dashboard + render/LMS)", "commands",
-                "MODE_REGISTRY.md"],
+                "MODE_REGISTRY.md", "assets/icon.svg", "SECURITY.md"],
         }],
         "excluded_patterns": [
             ".git", ".github", ".claude-plugin", "skills/ symlinks",
@@ -275,6 +275,7 @@ def emit_plugin_json(date):
         "interface": {
             "displayName": "Teaching Skills",
             "shortDescription": "Course design, lessons, assessment, mentoring, and reflection.",
+            "composerIcon": "./assets/icon.svg",
             "longDescription": "Teaching Skills for Codex covers the full university "
                                "teaching lifecycle: backward course design with "
                                "constructive-alignment gates, lesson building, "
@@ -530,6 +531,9 @@ def build(out_dir, date=None):
     (out / ".codex-plugin" / "plugin.json").write_text(emit_plugin_json(date), encoding="utf-8")
     (out / "README.md").write_text(emit_readme(skills, commit, date), encoding="utf-8")
     (out / "VERSION").write_text(CODEX_VERSION + "\n", encoding="utf-8")
+    (out / "assets").mkdir(exist_ok=True)
+    shutil.copy2(ROOT / "assets" / "icon.svg", out / "assets" / "icon.svg")
+    shutil.copy2(ROOT / "SECURITY.md", out / "SECURITY.md")
     if (ROOT / "LICENSE").exists():
         shutil.copy2(ROOT / "LICENSE", out / "LICENSE")
 

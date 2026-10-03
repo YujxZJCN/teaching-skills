@@ -8,6 +8,7 @@ regression fails by name.
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pytest
@@ -88,6 +89,30 @@ def test_validators_vendored_generator_excluded(pkg):
     names = {p.name for p in scripts.glob("*.py")}
     assert names == set(build_codex.VENDORED_SCRIPTS)
     assert "build_codex.py" not in names
+
+
+def test_marketplace_icon_is_a_local_self_contained_svg(pkg):
+    plugin = json.loads((pkg["dir"] / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
+    ref = Path(plugin["interface"]["composerIcon"])
+    assert not ref.is_absolute() and ".." not in ref.parts
+    icon = pkg["dir"] / ref
+    assert icon.suffix == ".svg" and icon.stat().st_size < 50 * 1024
+    svg = ET.fromstring(icon.read_text(encoding="utf-8"))
+    assert svg.tag == "{http://www.w3.org/2000/svg}svg"
+    assert (svg.get("width"), svg.get("height"), svg.get("viewBox")) == ("512", "512", "0 0 512 512")
+    for element in svg.iter():
+        assert element.tag.rsplit("}", 1)[-1] not in {"script", "image", "foreignObject"}
+        for name, value in element.attrib.items():
+            assert not name.lower().startswith("on")
+            assert "url(" not in value
+            if name.rsplit("}", 1)[-1] == "href":
+                assert value.startswith("#")
+
+
+def test_security_policy_is_included_in_distribution(pkg):
+    policy = (pkg["dir"] / "SECURITY.md").read_text(encoding="utf-8")
+    assert policy.strip()
+    assert policy == (ROOT / "SECURITY.md").read_text(encoding="utf-8")
 
 
 def test_shared_fully_vendored(pkg):
