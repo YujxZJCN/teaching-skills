@@ -41,7 +41,7 @@ academic-paper skills.
 | **course-designer** | 1 DESIGN | Backward design: Bloom-tagged outcomes → assessment plan → semester arc → syllabus. Socratic mode for blank-page starts. |
 | **lesson-builder** | 2 BUILD | Lesson plans, lecture notes, slide outlines, active-learning activities, cases, discussion guides, flipped formats. |
 | **assessment-architect** | 3 ASSESS | Blueprint-first exams and quizzes, rubrics, TILT project briefs, AI-resilience integrity audits, post-exam item analysis. |
-| **student-mentor** | 4 DELIVER | Feedback writing, struggling-student intervention plans, recommendation letters, difficult emails, advising and mentoring plans. |
+| **student-mentor** | 4 DELIVER | Feedback writing, struggling-student intervention plans, recommendation letters, difficult emails, advising and mentoring plans. <a href="https://mindpal.space/skills/student-mentor?utm_source=github&utm_medium=readme_button"><img src="https://mindpal.space/badges/deploy-on-mindpal.svg" alt="Deploy on MindPal" height="22"></a> |
 | **submission-auditor** | 4 DELIVER | Spec-driven submission checking: compile your template/requirements into a checkable spec, audit submissions (single or batch) with located evidence, per-student feedback reports + class pattern report. |
 | **teaching-reflector** | 5 REFLECT | Bias-honest evaluation analysis, mid-course feedback, peer observation, teaching portfolio and statement, SoTL design. |
 | **teaching-pipeline** | orchestrator | Runs the whole lifecycle over the Course Passport, with two non-skippable gates and a weekly delivery loop. |
